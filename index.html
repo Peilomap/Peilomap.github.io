@@ -10,4 +10,309 @@
     <p>In this page, I will share mathematics with you!</p>
     <p>The following article is my recent work, please have a look!</p> <a href="A_Category_View_of_Product_Topology.pdf" download>A_Category_View_of_Product_Topology</a>
 </body>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --text-color: #333;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        h1 {
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: var(--primary-color);
+            font-weight: 300;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .courses-section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            color: var(--dark-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        
+        .course-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .course-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+        }
+        
+        .course-title {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+        
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .course-body {
+            padding: 20px;
+        }
+        
+        .course-description {
+            margin-bottom: 15px;
+        }
+        
+        .course-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        
+        .detail-item {
+            margin-bottom: 8px;
+        }
+        
+        .detail-label {
+            font-weight: bold;
+            color: var(--dark-color);
+        }
+        
+        .grade {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .grade-a {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .grade-b {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .grade-c {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        @media (max-width: 768px) {
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .course-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>张三的个人主页</h1>
+            <p class="subtitle">计算机科学与技术专业 | 某某大学</p>
+        </header>
+        
+        <section class="courses-section">
+            <h2 class="section-title">课程介绍</h2>
+            
+            <div class="course-grid">
+                <!-- 课程卡片1 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3 class="course-title">数据结构与算法</h3>
+                        <div class="course-meta">
+                            <span>2023年秋季学期</span>
+                            <span>李教授</span>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <p class="course-description">
+                            本课程介绍了基本数据结构（数组、链表、栈、队列、树、图）和经典算法（排序、搜索、动态规划等），培养学生解决复杂问题的算法思维能力。
+                        </p>
+                        <div class="course-details">
+                            <div class="detail-item">
+                                <span class="detail-label">成绩:</span>
+                                <span class="grade grade-a">A (92分)</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">学分:</span>
+                                <span>4</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">课程类型:</span>
+                                <span>专业必修</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">教材:</span>
+                                <span>《数据结构与算法分析》</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 课程卡片2 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3 class="course-title">数据库系统原理</h3>
+                        <div class="course-meta">
+                            <span>2023年春季学期</span>
+                            <span>王教授</span>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <p class="course-description">
+                            学习关系数据库理论、SQL语言、数据库设计、事务处理和并发控制等核心概念，通过实践项目掌握数据库应用开发技能。
+                        </p>
+                        <div class="course-details">
+                            <div class="detail-item">
+                                <span class="detail-label">成绩:</span>
+                                <span class="grade grade-a">A (95分)</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">学分:</span>
+                                <span>3</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">课程类型:</span>
+                                <span>专业必修</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">教材:</span>
+                                <span>《数据库系统概念》</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 课程卡片3 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3 class="course-title">计算机网络</h3>
+                        <div class="course-meta">
+                            <span>2022年秋季学期</span>
+                            <span>张教授</span>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <p class="course-description">
+                            涵盖计算机网络体系结构、各层协议原理、网络编程等内容，包括TCP/IP协议栈、HTTP协议、网络安全基础等知识点。
+                        </p>
+                        <div class="course-details">
+                            <div class="detail-item">
+                                <span class="detail-label">成绩:</span>
+                                <span class="grade grade-b">B+ (87分)</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">学分:</span>
+                                <span>3</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">课程类型:</span>
+                                <span>专业必修</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">教材:</span>
+                                <span>《计算机网络：自顶向下方法》</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 课程卡片4 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3 class="course-title">人工智能导论</h3>
+                        <div class="course-meta">
+                            <span>2024年春季学期</span>
+                            <span>陈教授</span>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <p class="course-description">
+                            介绍人工智能基本概念、机器学习算法、神经网络、自然语言处理等前沿技术，通过实践项目了解AI应用开发流程。
+                        </p>
+                        <div class="course-details">
+                            <div class="detail-item">
+                                <span class="detail-label">成绩:</span>
+                                <span class="grade grade-a">A- (89分)</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">学分:</span>
+                                <span>2</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">课程类型:</span>
+                                <span>专业选修</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">教材:</span>
+                                <span>《人工智能：现代方法》</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
 </html>
