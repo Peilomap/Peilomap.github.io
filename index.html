@@ -112,13 +112,18 @@
         }
         
         .course-details {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+            display: flex;                /* 改为flex布局 */
+            flex-wrap: nowrap;            /* 禁止换行 */
+            justify-content: space-between; /* 均匀分布 */
+            gap: 15px;                   /* 项目间距 */
+            overflow-x: auto;            /* 如果内容过多允许横向滚动 */
+            padding-bottom: 5px;         /* 为滚动条留空间 */
         }
-        
+
         .detail-item {
-            margin-bottom: 8px;
+            white-space: nowrap;         /* 禁止文本换行 */
+            min-width: max-content;      /* 根据内容自动调整宽度 */
+            margin-bottom: 0;            /* 移除原始的下边距 */
         }
         
         .detail-label {
