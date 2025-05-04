@@ -32,12 +32,15 @@
             line-height: 1.6;
             padding: 20px;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Layout */
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            flex: 1;
         }
 
         header {
@@ -63,6 +66,7 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             margin-bottom: 1.5rem;
             border-radius: var(--radius);
+            flex-wrap: wrap;
         }
 
         .nav-item {
@@ -94,6 +98,45 @@
             background-color: var(--dark);
         }
 
+        /* Sub Navigation */
+        .sub-nav {
+            display: flex;
+            margin-bottom: 1.5rem;
+            background-color: #fff;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .sub-nav-item {
+            margin-right: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+            font-size: 1.1rem;
+            position: relative;
+            padding: 0.3rem 0;
+            transition: var(--transition);
+        }
+
+        .sub-nav-item:hover {
+            color: var(--primary);
+        }
+
+        .sub-nav-item.active {
+            color: var(--dark);
+            font-weight: bold;
+        }
+
+        .sub-nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--dark);
+        }
+
         /* Content Sections */
         .content {
             display: none;
@@ -105,6 +148,14 @@
         }
 
         .content.active {
+            display: block;
+        }
+
+        .sub-content {
+            display: none;
+        }
+
+        .sub-content.active {
             display: block;
         }
 
@@ -221,6 +272,15 @@
             background-color: var(--dark);
         }
 
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -229,7 +289,7 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .navbar {
+            .navbar, .sub-nav {
                 flex-wrap: wrap;
                 justify-content: center;
             }
@@ -238,6 +298,12 @@
                 margin-right: 1rem;
                 margin-bottom: 0.5rem;
                 font-size: 1.2rem;
+            }
+            
+            .sub-nav-item {
+                margin-right: 1rem;
+                margin-bottom: 0.5rem;
+                font-size: 1rem;
             }
             
             .course-grid {
@@ -282,6 +348,11 @@
         
         <main>
             <div id="courses" class="content active">
+                <div class="sub-nav">
+                    <div class="sub-nav-item active" data-subtarget="algebra">Algebra</div>
+                    <div class="sub-nav-item" data-subtarget="analysis">Analysis</div>
+                </div>
+                
                 <div id="algebra-content" class="sub-content active">
                     <section class="courses-section">
                         <h2 class="section-title">Algebra Courses</h2>
@@ -351,6 +422,89 @@
                         </div>
                     </section>
                 </div>
+                
+                <div id="analysis-content" class="sub-content">
+                    <section class="courses-section">
+                        <h2 class="section-title">Analysis Courses</h2>
+                        <div class="course-grid">
+                            <article class="course-card">
+                                <div class="course-header">
+                                    <h3 class="course-title">Real Analysis</h3>
+                                    <div class="instructor">Prof. John Doe</div>
+                                    <div class="course-time">Fall, 2023</div>
+                                </div>
+                                <div class="course-body">
+                                    <p class="course-description">
+                                        Introduction to measure theory and Lebesgue integration, covering topics such as:
+                                        <ul style="margin-left: 20px; margin-top: 10px;">
+                                            <li>Sigma-algebras and measurable spaces</li>
+                                            <li>Lebesgue measure on R^n</li>
+                                            <li>Measurable functions</li>
+                                            <li>Lebesgue integral and its properties</li>
+                                            <li>Convergence theorems</li>
+                                        </ul>
+                                    </p>
+                                    <div class="course-details">
+                                        <div class="detail-item">
+                                            <span class="detail-label">Grade:</span>
+                                            <span class="grade grade-a">A (95)</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Credit:</span>
+                                            <span>4</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Type:</span>
+                                            <span>Required</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Textbook:</span>
+                                            <span class="textbook">Real Analysis by Royden</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            
+                            <article class="course-card">
+                                <div class="course-header">
+                                    <h3 class="course-title">Complex Analysis</h3>
+                                    <div class="instructor">Prof. Jane Smith</div>
+                                    <div class="course-time">Spring, 2023</div>
+                                </div>
+                                <div class="course-body">
+                                    <p class="course-description">
+                                        Theory of functions of a complex variable, including:
+                                        <ul style="margin-left: 20px; margin-top: 10px;">
+                                            <li>Analytic functions and Cauchy-Riemann equations</li>
+                                            <li>Complex integration and Cauchy's theorem</li>
+                                            <li>Power series and Laurent series</li>
+                                            <li>Residue theory and applications</li>
+                                            <li>Conformal mappings</li>
+                                        </ul>
+                                    </p>
+                                    <div class="course-details">
+                                        <div class="detail-item">
+                                            <span class="detail-label">Grade:</span>
+                                            <span class="grade grade-a">A- (90)</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Credit:</span>
+                                            <span>3</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Type:</span>
+                                            <span>Elective</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Textbook:</span>
+                                            <span class="textbook">Complex Analysis by Ahlfors</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+                </div>
             </div>
             
             <div id="experience" class="content">
@@ -360,23 +514,41 @@
                 </section>
             </div>
         </main>
+        
+        <footer>
+            <p>This webpage was created with the assistance of AI technology.</p>
+            <p>© 2024 Peilomap's GitHub Pages. All rights reserved.</p>
+        </footer>
     </div>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Cache DOM elements
             const navItems = document.querySelectorAll('.nav-item');
+            const subNavItems = document.querySelectorAll('.sub-nav-item');
             const contents = document.querySelectorAll('.content');
+            const subContents = document.querySelectorAll('.sub-content');
             
             // Initialize first content
             showContent('courses');
+            showSubContent('algebra');
             
-            // Add event listeners to nav items
+            // Add event listeners to main nav items
             navItems.forEach(item => {
                 item.addEventListener('click', function() {
                     const target = this.getAttribute('data-target');
                     if (target) {
                         showContent(target);
+                    }
+                });
+            });
+            
+            // Add event listeners to sub nav items
+            subNavItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const target = this.getAttribute('data-subtarget');
+                    if (target) {
+                        showSubContent(target);
                     }
                 });
             });
@@ -404,6 +576,26 @@
                         document.querySelector(`.nav-item[data-target="${contentId}"]`).classList.add('active');
                         document.querySelector('.loading')?.classList.remove('active');
                     }, 100); // Small delay for animation
+                }
+            }
+            
+            // Sub content switching function
+            function showSubContent(subContentId) {
+                // Hide all sub contents
+                subContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Remove active class from all sub nav items
+                subNavItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Show selected sub content
+                const targetSubContent = document.getElementById(`${subContentId}-content`);
+                if (targetSubContent) {
+                    targetSubContent.classList.add('active');
+                    document.querySelector(`.sub-nav-item[data-subtarget="${subContentId}"]`).classList.add('active');
                 }
             }
         });
