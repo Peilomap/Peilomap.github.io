@@ -1,331 +1,288 @@
-<!DOCTYPE html> <!-- 声明文档类型为HTML5 -->
-<html lang="en"> <!-- HTML文档开始，设置语言为英语 -->
-<head> <!-- 文档头部，包含元数据和链接资源 -->
-    <meta charset="UTF-8"> <!-- 设置字符编码为UTF-8 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 响应式视口设置 -->
-    <title>Welcome to my GitHub Pages!</title> <!-- 页面标题 -->
-    <style> <!-- 内联CSS样式 -->
-        /* CSS变量定义，便于统一管理和修改 */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to my GitHub Pages!</title>
+    <style>
         :root {
-            --primary-color: #3498db; /* 主色调 - 蓝色 */
-            --secondary-color: #2ecc71; /* 次要色调 - 绿色 */
-            --dark-color: #2c3e50; /* 深色 - 用于文本 */
-            --light-color: #ecf0f1; /* 浅色 - 背景色 */
-            --text-color: #333; /* 主要文本颜色 */
-            --border-radius: 8px; /* 统一圆角大小 */
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 统一阴影效果 */
-            --highlight-color: #fb7299; /* 高亮色 - 粉色 */
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --text-color: #333;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --highlight-color: #fb7299;
         }
         
-        /* 通用样式重置 */
         * {
-            margin: 0; /* 清除默认外边距 */
-            padding: 0; /* 清除默认内边距 */
-            box-sizing: border-box; /* 盒模型设置为border-box */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 默认字体 */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        /* 页面主体样式 */
         body {
-            background-color: #f5f7fa; /* 页面背景色 */
-            color: var(--text-color); /* 文本颜色使用变量 */
-            line-height: 1.6; /* 行高设置 */
-            padding: 20px; /* 页面内边距 */
+            background-color: #f5f7fa;
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
         }
         
-        /* 页眉样式 */
         header {
-            text-align: center; /* 文本居中 */
-            margin-bottom: 40px; /* 底部外边距 */
-            padding: 20px 0; /* 上下内边距 */
-            background-color: white; /* 白色背景 */
-            border-radius: var(--border-radius); /* 圆角使用变量 */
-            box-shadow: var(--box-shadow); /* 阴影使用变量 */
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
         }
         
-        /* 主标题样式 */
         h1 {
-            color: var(--dark-color); /* 标题颜色 */
-            margin-bottom: 10px; /* 底部外边距 */
+            color: var(--dark-color);
+            margin-bottom: 10px;
         }
         
-        /* 副标题样式 */
         .subtitle {
-            color: var(--primary-color); /* 使用主色调 */
-            font-weight: 300; /* 字体粗细 */
+            color: var(--primary-color);
+            font-weight: 300;
         }
         
-        /* 主容器样式 */
         .container {
-            max-width: 1200px; /* 最大宽度 */
-            margin: 0 auto; /* 水平居中 */
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         /* 导航栏样式 */
         .navbar {
-            display: flex; /* 弹性布局 */
-            background-color: #fff; /* 白色背景 */
-            padding: 15px 20px; /* 内边距 */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 阴影效果 */
-            position: relative; /* 相对定位 */
-            z-index: 100; /* 层叠顺序 */
-            margin-bottom: 20px; /* 底部外边距 */
+            display: flex;
+            background-color: #fff;
+            padding: 15px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 100;
+            margin-bottom: 20px;
         }
         
-        /* 导航项样式 */
         .nav-item {
-            margin-right: 30px; /* 右侧外边距 */
-            cursor: pointer; /* 鼠标指针样式 */
-            color: var(--text-color); /* 文本颜色 */
-            font-size: 16px; /* 字体大小 */
-            position: relative; /* 相对定位 */
-            padding: 5px 0; /* 上下内边距 */
+            margin-right: 30px;
+            cursor: pointer;
+            color: var(--text-color);
+            font-size: 16px;
+            position: relative;
+            padding: 5px 0;
         }
         
-        /* 导航项悬停效果 */
         .nav-item:hover {
-            color: var(--highlight-color); /* 悬停时变色 */
+            color: var(--highlight-color);
         }
         
-        /* 活动导航项样式 */
         .nav-item.active {
-            color: var(--highlight-color); /* 高亮色 */
-            font-weight: bold; /* 加粗 */
+            color: var(--highlight-color);
+            font-weight: bold;
         }
         
-        /* 活动导航项底部指示条 */
         .nav-item.active::after {
-            content: ''; /* 伪元素内容 */
-            position: absolute; /* 绝对定位 */
-            bottom: 0; /* 底部对齐 */
-            left: 0; /* 左侧对齐 */
-            width: 100%; /* 宽度100% */
-            height: 3px; /* 高度 */
-            background-color: var(--highlight-color); /* 背景色 */
-        }
-        
-        /* 有子导航的导航项样式 */
-        .has-subnav {
-            position: relative; /* 相对定位 */
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--highlight-color);
         }
         
         /* 子导航样式 */
+        .has-subnav {
+            position: relative;
+        }
+        
         .subnav {
-            display: none; /* 默认隐藏 */
-            position: absolute; /* 绝对定位 */
-            left: 0; /* 左侧对齐 */
-            top: 100%; /* 从父元素底部开始 */
-            background-color: #fff; /* 白色背景 */
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1); /* 阴影效果 */
-            padding: 15px; /* 内边距 */
-            min-width: 200px; /* 最小宽度 */
-            z-index: 99; /* 层叠顺序 */
-            border-radius: var(--border-radius); /* 圆角 */
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background-color: #fff;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            padding: 15px;
+            min-width: 200px;
+            z-index: 99;
+            border-radius: var(--border-radius);
         }
         
-        /* 子导航项样式 */
         .subnav-item {
-            padding: 8px 0; /* 上下内边距 */
-            color: var(--text-color); /* 文本颜色 */
-            cursor: pointer; /* 鼠标指针样式 */
-            display: block; /* 块级元素 */
+            padding: 8px 0;
+            color: var(--text-color);
+            cursor: pointer;
+            display: block;
         }
         
-        /* 子导航项悬停效果 */
         .subnav-item:hover {
-            color: var(--highlight-color); /* 悬停变色 */
+            color: var(--highlight-color);
         }
         
-        /* 悬停时显示子导航 */
         .has-subnav:hover .subnav {
-            display: block; /* 显示子导航 */
+            display: block;
         }
         
-        /* 内容区域样式 */
+        /* 内容区域 */
         .content {
-            display: none; /* 默认隐藏 */
-            padding: 20px; /* 内边距 */
-            background-color: white; /* 白色背景 */
-            border-radius: var(--border-radius); /* 圆角 */
-            box-shadow: var(--box-shadow); /* 阴影 */
+            display: none;
+            padding: 20px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
         }
         
-        /* 活动内容区域样式 */
         .content.active {
-            display: block; /* 显示内容 */
+            display: block;
         }
         
-        /* 课程部分样式 */
+        /* 课程卡片样式优化 */
         .courses-section {
-            margin-bottom: 40px; /* 底部外边距 */
+            margin-bottom: 40px;
         }
         
-        /* 部分标题样式 */
         .section-title {
-            color: var(--dark-color); /* 文本颜色 */
-            border-bottom: 2px solid var(--primary-color); /* 底部边框 */
-            padding-bottom: 10px; /* 底部内边距 */
-            margin-bottom: 20px; /* 底部外边距 */
-            display: inline-block; /* 行内块元素 */
+            color: var(--dark-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: inline-block;
         }
         
-        /* 课程网格布局 */
         .course-grid {
-            display: grid; /* 网格布局 */
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* 自动填充列 */
-            gap: 25px; /* 网格间隙 */
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
         }
         
-        /* 课程卡片样式 */
         .course-card {
-            background-color: white; /* 白色背景 */
-            border-radius: var(--border-radius); /* 圆角 */
-            box-shadow: var(--box-shadow); /* 阴影 */
-            overflow: hidden; /* 隐藏溢出内容 */
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* 过渡效果 */
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease;
         }
         
-        /* 课程卡片悬停效果 */
         .course-card:hover {
-            transform: translateY(-5px); /* 上移效果 */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* 阴影增强 */
+            transform: translateY(-3px);
         }
         
-        /* 课程卡片头部样式 */
         .course-header {
-            background-color: var(--primary-color); /* 主色调背景 */
-            color: white; /* 白色文本 */
-            padding: 15px; /* 内边距 */
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
         }
         
-        /* 课程标题样式 */
         .course-title {
-            margin: 0; /* 清除默认外边距 */
-            font-size: 1.3rem; /* 字体大小 */
+            margin: 0;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
         }
         
-        /* 课程元信息样式 */
-        .course-meta {
-            display: flex; /* 弹性布局 */
-            justify-content: space-between; /* 两端对齐 */
-            margin-top: 8px; /* 顶部外边距 */
-            font-size: 0.9rem; /* 字体大小 */
-            opacity: 0.9; /* 透明度 */
+        .instructor {
+            font-style: italic;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
         }
         
-        /* 课程卡片主体样式 */
+        .course-time {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
         .course-body {
-            padding: 20px; /* 内边距 */
+            padding: 20px;
         }
         
-        /* 课程描述样式 */
         .course-description {
-            margin-bottom: 15px; /* 底部外边距 */
+            margin-bottom: 15px;
+            line-height: 1.7;
         }
         
-        /* 课程详情样式 */
+        /* 课程详情优化布局 */
         .course-details {
-            display: flex; /* 弹性布局 */
-            flex-wrap: nowrap; /* 不换行 */
-            justify-content: space-between; /* 两端对齐 */
-            gap: 15px; /* 项目间距 */
-            overflow-x: auto; /* 横向滚动 */
-            padding-bottom: 5px; /* 底部内边距 */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
         }
-
-        /* 详情项样式 */
+        
         .detail-item {
-            white-space: nowrap; /* 不换行 */
-            min-width: max-content; /* 最小宽度 */
-            margin-bottom: 0; /* 清除底部外边距 */
+            background-color: var(--light-color);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.9rem;
         }
         
-        /* 详情标签样式 */
         .detail-label {
-            font-weight: bold; /* 加粗 */
-            color: var(--dark-color); /* 文本颜色 */
+            font-weight: bold;
+            color: var(--dark-color);
+            margin-right: 5px;
         }
         
-        /* 成绩样式 */
         .grade {
-            display: inline-block; /* 行内块元素 */
-            padding: 3px 8px; /* 内边距 */
-            border-radius: 4px; /* 圆角 */
-            font-weight: bold; /* 加粗 */
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
         }
         
-        /* A级成绩样式 */
         .grade-a {
-            background-color: #d4edda; /* 背景色 */
-            color: #155724; /* 文本颜色 */
+            background-color: #d4edda;
+            color: #155724;
         }
         
-        /* B级成绩样式 */
-        .grade-b {
-            background-color: #fff3cd; /* 背景色 */
-            color: #856404; /* 文本颜色 */
+        .textbook {
+            font-style: italic;
         }
         
-        /* C级成绩样式 */
-        .grade-c {
-            background-color: #f8d7da; /* 背景色 */
-            color: #721c24; /* 文本颜色 */
-        }
-        
-        /* 响应式设计 - 小于768px屏幕 */
+        /* 响应式设计 */
         @media (max-width: 768px) {
-            /* 导航栏在小屏幕上换行 */
             .navbar {
-                flex-wrap: wrap; /* 允许换行 */
+                flex-wrap: wrap;
             }
             
-            /* 调整导航项间距 */
             .nav-item {
-                margin-right: 15px; /* 减小右边距 */
-                margin-bottom: 10px; /* 添加底部外边距 */
+                margin-right: 15px;
+                margin-bottom: 10px;
             }
             
-            /* 课程网格改为单列 */
             .course-grid {
-                grid-template-columns: 1fr; /* 单列布局 */
+                grid-template-columns: 1fr;
             }
             
-            /* 课程详情改为垂直布局 */
             .course-details {
-                flex-direction: column; /* 垂直排列 */
-                gap: 10px; /* 减小间距 */
+                flex-direction: column;
+                gap: 10px;
             }
             
-            /* 详情项允许换行 */
             .detail-item {
-                white-space: normal; /* 允许换行 */
+                width: 100%;
             }
         }
     </style>
 </head>
-<body> <!-- 文档主体 -->
-    <div class="container"> <!-- 主容器 -->
-        <header> <!-- 页眉 -->
-            <h1>Peilomap's GitHub Pages</h1> <!-- 主标题 -->
-            <p class="subtitle">An undergraduate student majored in mathematics</p> <!-- 副标题 -->
-            <p>In this page, I will share mathematics with you!</p> <!-- 简介 -->
-            <p>The following article is my recent work, please have a look.</p> <!-- 提示 -->
-            <a href="A_Category_View_of_Product_Topology.pdf" download>A_Category_View_of_Product_Topology</a> <!-- 下载链接 -->
+<body>
+    <div class="container">
+        <header>
+            <h1>Peilomap's GitHub Pages</h1>
+            <p class="subtitle">An undergraduate student majored in mathematics</p>
+            <p>In this page, I will share mathematics with you!</p>
+            <p>The following article is my recent work, please have a look.</p>
+            <a href="A_Category_View_of_Product_Topology.pdf" download>A_Category_View_of_Product_Topology</a>
         </header>
 
-        <!-- 导航栏 -->
         <div class="navbar">
-            <!-- 课程导航项（带子导航） -->
             <div class="nav-item has-subnav active" onclick="showContent('courses')">
-                Courses I learned <!-- 主导航文本 -->
-                <!-- 子导航菜单 -->
+                Courses I learned
                 <div class="subnav">
-                    <div class="subnav-item" onclick="showSubContent('algebra')">Algebra</div> <!-- 代数子项 -->
-                    <div class="subnav-item" onclick="showSubContent('analysis')">Analysis</div> <!-- 分析子项 -->
-                    <div class="subnav-item" onclick="showSubContent('topology')">Topology</div> <!-- 拓扑子项 -->
+                    <div class="subnav-item" onclick="showSubContent('algebra')">Algebra</div>
+                    <div class="subnav-item" onclick="showSubContent('analysis')">Analysis</div>
+                    <div class="subnav-item" onclick="showSubContent('topology')">Topology</div>
                 </div>
             </div>
-            <!-- 其他导航项 -->
             <div class="nav-item" onclick="showContent('drama')">番剧</div>
             <div class="nav-item" onclick="showContent('live')">直播</div>
             <div class="nav-item" onclick="showContent('game')">游戏中心</div>
@@ -339,51 +296,45 @@
         <div id="courses" class="content active">
             <!-- Algebra 内容 -->
             <div id="algebra-content" class="sub-content active">
-                <section class="courses-section"> <!-- 课程部分 -->
-                    <h2 class="section-title">Algebra Courses</h2> <!-- 部分标题 -->
-                    <div class="course-grid"> <!-- 课程网格 -->
-                        <!-- 线性代数课程卡片 -->
+                <section class="courses-section">
+                    <h2 class="section-title">Algebra Courses</h2>
+                    <div class="course-grid">
                         <div class="course-card">
-                            <div class="course-header"> <!-- 卡片头部 -->
-                                <h3 class="course-title">Advanced Linear Algebra II (H)</h3> <!-- 课程标题 -->
-                                <div class="course-meta"> <!-- 课程元信息 -->
-                                    <span>Spring, 2024</span> <!-- 学期 -->
-                                    <span><a href="https://ziqing.org" target="_blank" rel="noopener noreferrer" aria-label="Visiting Homepage of Prof. Ziqing Xiang"> Prof. Ziqing Xiang</a></span> <!-- 教授链接 -->
-                                </div>
+                            <div class="course-header">
+                                <h3 class="course-title">Advanced Linear Algebra II (H)</h3>
+                                <div class="instructor">Prof. Ziqing Xiang</div>
+                                <div class="course-time">Spring, 2024</div>
                             </div>
-                            <div class="course-body"> <!-- 卡片主体 -->
-                                <p class="course-description"> <!-- 课程描述 -->
+                            <div class="course-body">
+                                <p class="course-description">
                                     This course is divided into three parts. The first part is about polynomial ring. The second part is about bilinear form. The third part is about Jordan-Chevalley decomposition.
                                 </p>
-                                <div class="course-details"> <!-- 课程详情 -->
-                                    <div class="detail-item"> <!-- 成绩详情 -->
+                                <div class="course-details">
+                                    <div class="detail-item">
                                         <span class="detail-label">Grade:</span>
                                         <span class="grade grade-a">A+ (97)</span>
                                     </div>
-                                    <div class="detail-item"> <!-- 学分详情 -->
+                                    <div class="detail-item">
                                         <span class="detail-label">Credit:</span>
                                         <span>4</span>
                                     </div>
-                                    <div class="detail-item"> <!-- 类型详情 -->
+                                    <div class="detail-item">
                                         <span class="detail-label">Type:</span>
                                         <span>Required</span>
                                     </div>
-                                    <div class="detail-item"> <!-- 教材详情 -->
+                                    <div class="detail-item">
                                         <span class="detail-label">Textbook:</span>
-                                        <span>Instructor-prepared materials</span>
+                                        <span class="textbook">Instructor-prepared materials</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- 抽象代数课程卡片 -->
                         <div class="course-card">
                             <div class="course-header">
                                 <h3 class="course-title">Abstract Algebra (H)</h3>
-                                <div class="course-meta">
-                                    <span>Fall, 2024</span>
-                                    <span>Prof. Caiheng Li</span>
-                                </div>
+                                <div class="instructor">Prof. Caiheng Li</div>
+                                <div class="course-time">Fall, 2024</div>
                             </div>
                             <div class="course-body">
                                 <p class="course-description">
@@ -404,7 +355,7 @@
                                     </div>
                                     <div class="detail-item">
                                         <span class="detail-label">Textbook:</span>
-                                        <span>《抽象代数I》</span>
+                                        <span class="textbook">《抽象代数I》</span>
                                     </div>
                                 </div>
                             </div>
@@ -413,19 +364,16 @@
                 </section>
             </div>
             
-            <!-- Analysis 内容 (示例) -->
+            <!-- Analysis 内容 -->
             <div id="analysis-content" class="sub-content">
                 <section class="courses-section">
                     <h2 class="section-title">Analysis Courses</h2>
                     <div class="course-grid">
-                        <!-- 实分析课程卡片 -->
                         <div class="course-card">
                             <div class="course-header">
                                 <h3 class="course-title">Real Analysis</h3>
-                                <div class="course-meta">
-                                    <span>Fall, 2023</span>
-                                    <span>Prof. John Doe</span>
-                                </div>
+                                <div class="instructor">Prof. John Doe</div>
+                                <div class="course-time">Fall, 2023</div>
                             </div>
                             <div class="course-body">
                                 <p class="course-description">
@@ -446,7 +394,7 @@
                                     </div>
                                     <div class="detail-item">
                                         <span class="detail-label">Textbook:</span>
-                                        <span>Real Analysis by Royden</span>
+                                        <span class="textbook">Real Analysis by Royden</span>
                                     </div>
                                 </div>
                             </div>
@@ -455,19 +403,16 @@
                 </section>
             </div>
             
-            <!-- Topology 内容 (示例) -->
+            <!-- Topology 内容 -->
             <div id="topology-content" class="sub-content">
                 <section class="courses-section">
                     <h2 class="section-title">Topology Courses</h2>
                     <div class="course-grid">
-                        <!-- 一般拓扑学课程卡片 -->
                         <div class="course-card">
                             <div class="course-header">
                                 <h3 class="course-title">General Topology</h3>
-                                <div class="course-meta">
-                                    <span>Spring, 2023</span>
-                                    <span>Prof. Jane Smith</span>
-                                </div>
+                                <div class="instructor">Prof. Jane Smith</div>
+                                <div class="course-time">Spring, 2023</div>
                             </div>
                             <div class="course-body">
                                 <p class="course-description">
@@ -488,7 +433,7 @@
                                     </div>
                                     <div class="detail-item">
                                         <span class="detail-label">Textbook:</span>
-                                        <span>Topology by Munkres</span>
+                                        <span class="textbook">Topology by Munkres</span>
                                     </div>
                                 </div>
                             </div>
@@ -536,51 +481,48 @@
     </div>
     
     <script>
-        // 显示主内容函数
+        // 显示主内容
         function showContent(contentId) {
-            // 隐藏所有内容区域
+            // 隐藏所有内容
             document.querySelectorAll('.content').forEach(content => {
                 content.classList.remove('active');
             });
             
-            // 移除所有导航项的active类
+            // 取消所有导航项的active类
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.classList.remove('active');
             });
             
-            // 显示选中的内容区域
+            // 显示选中的内容
             document.getElementById(contentId).classList.add('active');
             
             // 为选中的导航项添加active类
             event.currentTarget.classList.add('active');
             
-            // 如果是课程页面，默认显示第一个子内容(代数)
+            // 如果是课程页面，默认显示第一个子内容
             if (contentId === 'courses') {
                 showSubContent('algebra');
             }
         }
         
-        // 显示子内容函数
+        // 显示子内容
         function showSubContent(subContentId) {
-            // 隐藏所有子内容区域
+            // 隐藏所有子内容
             document.querySelectorAll('.sub-content').forEach(content => {
                 content.classList.remove('active');
             });
             
-            // 显示选中的子内容区域
+            // 显示选中的子内容
             document.getElementById(`${subContentId}-content`).classList.add('active');
             
             // 阻止事件冒泡，避免触发父元素的click事件
             event.stopPropagation();
         }
         
-        // 页面加载完成后初始化
+        // 初始化显示课程和代数内容
         document.addEventListener('DOMContentLoaded', function() {
-            // 默认显示课程内容
             document.getElementById('courses').classList.add('active');
-            // 设置第一个导航项为active
             document.querySelector('.navbar .nav-item:first-child').classList.add('active');
-            // 默认显示代数内容
             showSubContent('algebra');
         });
     </script>
