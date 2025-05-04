@@ -120,26 +120,21 @@
             gap: 25px; /* 网格间隙 */
         }
         
-        /* 课程卡片样式 */
-        .course-card {
-            background-color: white; /* 白色背景 */
-            border-radius: var(--border-radius); /* 圆角 */
-            box-shadow: var(--box-shadow); /* 阴影 */
-            overflow: hidden; /* 隐藏溢出内容 */
-            transition: transform 0.3s ease; /* 悬停动画 */
-        }
-        
-        /* 课程卡片悬停效果 */
-        .course-card:hover {
-            transform: translateY(-3px); /* 上移效果 */
-        }
-        
-        /* 课程卡片头部样式 */
-        .course-header {
-            background-color: var(--primary-color); /* 主色调背景 */
-            color: white; /* 白色文字 */
-            padding: 15px; /* 内边距 */
-        }
+        /* 先定义course-card */
+.course-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+/* 然后定义course-header */
+.course-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px;
+}
         
         /* 课程标题样式 */
         .course-title {
@@ -486,7 +481,8 @@
         }
         
         // 显示子内容函数
-        function showContent(contentId, event) {
+        // 显示主内容函数
+function showContent(contentId, event) {
     // 隐藏所有内容区域
     document.querySelectorAll('.content').forEach(content => {
         content.classList.remove('active');
@@ -505,10 +501,11 @@
     
     // 如果是课程页面，默认显示第一个子内容(代数)
     if (contentId === 'courses') {
-        showSubContent('algebra', event);
+        showSubContent('algebra');
     }
 }
 
+// 显示子内容函数
 function showSubContent(subContentId, event) {
     // 隐藏所有子内容
     document.querySelectorAll('.sub-content').forEach(content => {
