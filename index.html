@@ -5,6 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcom to my GitHub Pages!</title>
     <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar {
+            display: flex;
+            background-color: #fff;
+            padding: 15px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .nav-item {
+            margin-right: 30px;
+            cursor: pointer;
+            color: #333;
+            font-size: 16px;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-item:hover {
+            color: #fb7299; /* 粉色，类似B站风格 */
+        }
+        
+        .nav-item.active {
+            color: #fb7299;
+            font-weight: bold;
+        }
+        
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #fb7299;
+        }
+        
+        .content {
+            display: none;
+            padding: 20px;
+        }
+        
+        .content.active {
+            display: block;
+        }
+        
         :root {
             --primary-color: #3498db;
             --secondary-color: #2ecc71;
@@ -163,7 +213,58 @@
             }
         }
     </style>
+
 </head>
+<body>
+    <div class="navbar">
+        <div class="nav-item active" onclick="showContent('home')">首页</div>
+        <div class="nav-item" onclick="showContent('drama')">番剧</div>
+        <div class="nav-item" onclick="showContent('live')">直播</div>
+        <div class="nav-item" onclick="showContent('game')">游戏中心</div>
+        <div class="nav-item" onclick="showContent('vip')">会员购</div>
+        <div class="nav-item" onclick="showContent('comic')">漫画</div>
+        <div class="nav-item" onclick="showContent('match')">赛事</div>
+        <div class="nav-item" onclick="showContent('download')">下载客户端</div>
+    </div>
+    
+    <div id="home" class="content active">
+        <h2>首页内容</h2>
+        <p>这里是首页的内容区域</p>
+    </div>
+    
+    <div id="drama" class="content">
+        <h2>番剧内容</h2>
+        <p>这里是番剧的内容区域</p>
+    </div>
+    
+    <div id="live" class="content">
+        <h2>直播内容</h2>
+        <p>这里是直播的内容区域</p>
+    </div>
+    
+    <!-- 其他内容区域... -->
+    
+    <script>
+        function showContent(contentId) {
+            // 隐藏所有内容
+            document.querySelectorAll('.content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // 取消所有导航项的active类
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // 显示选中的内容
+            document.getElementById(contentId).classList.add('active');
+            
+            // 为选中的导航项添加active类
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+
 <body>
     <div class="container">
         <header>
