@@ -1,533 +1,411 @@
-<!DOCTYPE html> <!-- 声明文档类型为HTML5 -->
-<html lang="en"> <!-- HTML文档的根元素，设置语言为英语 -->
-<head> <!-- 包含文档的元信息 -->
-    <meta charset="UTF-8"> <!-- 指定文档字符编码为UTF-8 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 设置视口，确保在移动设备上正确显示 -->
-    <title>Welcome to my GitHub Pages!</title> <!-- 设置网页标题 -->
-    <style> <!-- 开始CSS样式部分 -->
-        /* CSS变量用于整个页面的主题一致 */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peilomap's GitHub Pages</title>
+    <style>
+        /* CSS Variables */
         :root {
-            --primary-color: #3498db; /* 主色调蓝色 */
-            --dark-color: #2c3e50; /* 深色文字颜色 */
-            --light-color: #ecf0f1; /* 浅色背景色 */
-            --text-color: #333; /* 默认文字颜色 */
-            --border-radius: 8px; /* 默认圆角大小 */
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 默认阴影效果 */
+            --primary: #3498db;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --text: #333;
+            --radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --success-bg: #d4edda;
+            --success-text: #155724;
         }
-        
-        /* 所有元素的通用重置样式 */
-        * {
-            margin: 0; /* 移除默认外边距 */
-            padding: 0; /* 移除默认内边距 */
-            box-sizing: border-box; /* 盒模型计算方式，包含padding和border */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 默认字体栈 */
-        }
-        
-        /* 页面主体样式 */
-        body {
-            background-color: #f5f7fa; /* 浅灰色背景 */
-            color: var(--text-color); /* 使用CSS变量设置文字颜色 */
-            line-height: 1.6; /* 行高，提高可读性 */
-            padding: 20px; /* 页面内边距 */
-        }
-        
-        /* 头部区域样式 */
-        header {
-            text-align: center; /* 文字居中 */
-            margin-bottom: 40px; /* 底部外边距 */
-            padding: 20px 0; /* 上下内边距 */
-            background-color: white; /* 白色背景 */
-            border-radius: var(--border-radius); /* 使用变量设置圆角 */
-            box-shadow: var(--box-shadow); /* 使用变量设置阴影 */
-        }
-        
-        /* 一级标题样式 */
-        h1 {
-            color: var(--dark-color); /* 使用变量设置文字颜色 */
-            margin-bottom: 10px; /* 底部外边距 */
-        }
-        
-        /* 容器样式 */
-        .container {
-            max-width: 1200px; /* 最大宽度 */
-            margin: 0 auto; /* 水平居中 */
-        }
-        
-        /* 导航栏样式 */
-        .navbar {
-            display: flex; /* 弹性布局 */
-            background-color: #fff; /* 白色背景 */
-            padding: 15px 20px; /* 内边距 */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 阴影效果 */
-            position: relative; /* 相对定位 */
-            z-index: 100; /* 层叠顺序 */
-            margin-bottom: 20px; /* 底部外边距 */
-        }
-        
-        /* 导航项样式 */
-        .nav-item {
-            margin-right: 30px; /* 右侧外边距 */
-            cursor: pointer; /* 鼠标指针样式 */
-            color: var(--text-color); /* 文字颜色 */
-            font-size: 32px; /* 字体大小 */
-            position: relative; /* 相对定位 */
-            padding: 5px 0; /* 上下内边距 */
-        }
-        
-        /* 活动导航项下方指示条 */
-        .nav-item.active::after {
-            content: ''; /* 伪元素内容 */
-            position: absolute; /* 绝对定位 */
-            bottom: 0; /* 底部对齐 */
-            left: 0; /* 左侧对齐 */
-            width: 100%; /* 宽度100% */
-            height: 3px; /* 高度 */
-            background-color: var(--dark-color); /* 背景色 */
-        }
-        
-        /* 内容区域样式 */
-        .content {
-            display: none; /* 默认隐藏 */
-            padding: 20px; /* 内边距 */
-            background-color: white; /* 白色背景 */
-            border-radius: var(--border-radius); /* 圆角 */
-            box-shadow: var(--box-shadow); /* 阴影 */
-        }
-        
-        /* 活动内容区域样式 */
-        .content.active {
-            display: block; /* 显示内容 */
-        }
-        
-        /* 课程部分样式 */
-        .courses-section {
-            margin-bottom: 40px; /* 底部外边距 */
-        }
-        
-        /* 部分标题样式 */
-        .section-title {
-            color: var(--dark-color); /* 文字颜色 */
-            border-bottom: 2px solid var(--primary-color); /* 底部边框 */
-            padding-bottom: 10px; /* 底部内边距 */
-            margin-bottom: 20px; /* 底部外边距 */
-            display: inline-block; /* 行内块元素 */
-        }
-        
-        /* 课程网格布局 */
-        .course-grid {
-            display: grid; /* 网格布局 */
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* 自动填充列 */
-            gap: 25px; /* 网格间隙 */
-        }
-        
-        /* 先定义course-card */
-.course-card {
-    background-color: white;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    overflow: hidden;
-    transition: transform 0.3s ease;
-}
 
-/* 然后定义course-header */
-.course-header {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 15px;
-}
-        
-        /* 课程标题样式 */
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem 0;
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        h1 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            display: flex;
+            background-color: #fff;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+            border-radius: var(--radius);
+        }
+
+        .nav-item {
+            margin-right: 2rem;
+            cursor: pointer;
+            color: var(--text);
+            font-size: 1.5rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        .nav-item:hover {
+            color: var(--primary);
+        }
+
+        .nav-item.active {
+            color: var(--dark);
+            font-weight: bold;
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--dark);
+        }
+
+        /* Content Sections */
+        .content {
+            display: none;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        /* Course Cards */
+        .courses-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            color: var(--dark);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .course-card {
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+        }
+
         .course-title {
-            margin: 0; /* 移除外边距 */
-            font-size: 1.3rem; /* 字体大小 */
-            margin-bottom: 8px; /* 底部外边距 */
+            margin: 0 0 0.5rem;
+            font-size: 1.3rem;
         }
-        
-        /* 讲师信息样式 */
+
+        .instructor, .course-time {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
         .instructor {
-            font-style: italic; /* 斜体 */
-            font-size: 0.95rem; /* 字体大小 */
-            margin-bottom: 5px; /* 底部外边距 */
+            font-style: italic;
+            margin-bottom: 0.3rem;
         }
-        
-        /* 课程时间样式 */
-        .course-time {
-            font-size: 0.9rem; /* 字体大小 */
-            opacity: 0.9; /* 透明度 */
-        }
-        
-        /* 课程内容主体样式 */
+
         .course-body {
-            padding: 20px; /* 内边距 */
+            padding: 1.5rem;
         }
-        
-        /* 课程描述样式 */
+
         .course-description {
-            margin-bottom: 15px; /* 底部外边距 */
-            line-height: 1.7; /* 行高 */
+            margin-bottom: 1rem;
+            line-height: 1.7;
         }
-        
-        /* 课程详情布局 */
+
         .course-details {
-            display: flex; /* 弹性布局 */
-            flex-wrap: wrap; /* 允许换行 */
-            gap: 15px; /* 元素间隙 */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
-        
-        /* 详情项样式 */
+
         .detail-item {
-            background-color: var(--light-color); /* 浅色背景 */
-            padding: 8px 12px; /* 内边距 */
-            border-radius: 4px; /* 圆角 */
-            font-size: 0.9rem; /* 字体大小 */
+            background-color: var(--light);
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
         }
-        
-        /* 详情标签样式 */
+
         .detail-label {
-            font-weight: bold; /* 加粗 */
-            color: var(--dark-color); /* 文字颜色 */
-            margin-right: 5px; /* 右侧外边距 */
+            font-weight: bold;
+            color: var(--dark);
+            margin-right: 0.3rem;
         }
-        
-        /* 成绩样式 */
+
         .grade {
-            display: inline-block; /* 行内块元素 */
-            padding: 3px 8px; /* 内边距 */
-            border-radius: 4px; /* 圆角 */
-            font-weight: bold; /* 加粗 */
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: bold;
         }
-        
-        /* A级成绩样式 */
+
         .grade-a {
-            background-color: #d4edda; /* 背景色 */
-            color: #155724; /* 文字颜色 */
+            background-color: var(--success-bg);
+            color: var(--success-text);
         }
-        
-        /* 教材信息样式 */
+
         .textbook {
-            font-style: italic; /* 斜体 */
+            font-style: italic;
         }
-        
-        /* 响应式设计 - 屏幕宽度小于768px时的样式 */
+
+        /* Download Link */
+        .download-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .download-link:hover {
+            background-color: var(--dark);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            /* 导航栏响应式 */
             .navbar {
-                flex-wrap: wrap; /* 允许换行 */
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
-            /* 导航项响应式 */
             .nav-item {
-                margin-right: 15px; /* 右侧外边距 */
-                margin-bottom: 10px; /* 底部外边距 */
+                margin-right: 1rem;
+                margin-bottom: 0.5rem;
+                font-size: 1.2rem;
             }
             
-            /* 课程网格响应式 */
             .course-grid {
-                grid-template-columns: 1fr; /* 单列布局 */
+                grid-template-columns: 1fr;
             }
             
-            /* 课程详情响应式 */
             .course-details {
-                flex-direction: column; /* 垂直排列 */
-                gap: 10px; /* 元素间隙 */
+                flex-direction: column;
+                gap: 0.5rem;
             }
             
-            /* 详情项响应式 */
             .detail-item {
-                width: 100%; /* 宽度100% */
+                width: 100%;
             }
+        }
+
+        /* Loading State */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .loading.active {
+            display: block;
         }
     </style>
 </head>
 <body>
-    <!-- 页面主体内容 -->
     <div class="container">
-        <!-- 头部区域 -->
         <header>
-            <h1>Peilomap's GitHub Pages</h1> <!-- 主标题 -->
-            <p>In this page, I will share mathematics with you!</p> <!-- 描述文字 -->
-            <p>The following article is my recent work, please have a look.</p> <!-- 描述文字 -->
-            <a href="A_Category_View_of_Product_Topology.pdf" download>A_Category_View_of_Product_Topology</a> <!-- 下载链接 -->
+            <h1>Peilomap's GitHub Pages</h1>
+            <p>In this page, I will share mathematics with you!</p>
+            <p>The following article is my recent work, please have a look.</p>
+            <a href="A_Category_View_of_Product_Topology.pdf" download class="download-link">Download: A_Category_View_of_Product_Topology</a>
         </header>
 
-        <!-- 导航栏 -->
-        <div class="navbar">
-            <!-- 带有子导航的导航项 -->
-            <div class="nav-item has-subnav active" onclick="showContent('courses', event)">
-    Courses I learned
-</div>
-<div class="nav-item" onclick="showContent('experience', event)">Experience</div>
-        </div>
+        <nav class="navbar">
+            <div class="nav-item active" data-target="courses">Courses I learned</div>
+            <div class="nav-item" data-target="experience">Experience</div>
+        </nav>
         
-        <!-- 主课程内容区域 -->
-        <div id="courses" class="content active">
-            <!-- 代数内容 -->
-            <div id="algebra-content" class="sub-content active">
-                <section class="courses-section">
-                    <h2 class="section-title">Algebra Courses</h2> <!-- 部分标题 -->
-                    <div class="course-grid">
-                        <!-- 课程卡片1 -->
-                        <div class="course-card">
-                            <div class="course-header">
-                                <h3 class="course-title">Advanced Linear Algebra II (H)</h3> <!-- 课程标题 -->
-                                <div class="instructor">Prof. Ziqing Xiang</div> <!-- 讲师 -->
-                                <div class="course-time">Spring, 2024</div> <!-- 课程时间 -->
-                            </div>
-                            <div class="course-body">
-                                <p class="course-description">
-                                    This course is divided into three parts. The first part is about polynomial ring. The second part is about bilinear form. The third part is about Jordan-Chevalley decomposition.
-                                </p> <!-- 课程描述 -->
-                                <div class="course-details">
-                                    <div class="detail-item">
-                                        <span class="detail-label">Grade:</span> <!-- 成绩标签 -->
-                                        <span class="grade grade-a">A+ (97)</span> <!-- 成绩值 -->
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Credit:</span> <!-- 学分标签 -->
-                                        <span>4</span> <!-- 学分值 -->
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Type:</span> <!-- 类型标签 -->
-                                        <span>Required</span> <!-- 类型值 -->
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Textbook:</span> <!-- 教材标签 -->
-                                        <span class="textbook">Instructor-prepared materials</span> <!-- 教材信息 -->
+        <main>
+            <div id="courses" class="content active">
+                <div id="algebra-content" class="sub-content active">
+                    <section class="courses-section">
+                        <h2 class="section-title">Algebra Courses</h2>
+                        <div class="course-grid">
+                            <article class="course-card">
+                                <div class="course-header">
+                                    <h3 class="course-title">Advanced Linear Algebra II (H)</h3>
+                                    <div class="instructor">Prof. Ziqing Xiang</div>
+                                    <div class="course-time">Spring, 2024</div>
+                                </div>
+                                <div class="course-body">
+                                    <p class="course-description">
+                                        This course is divided into three parts. The first part is about polynomial ring. 
+                                        The second part is about bilinear form. The third part is about Jordan-Chevalley decomposition.
+                                    </p>
+                                    <div class="course-details">
+                                        <div class="detail-item">
+                                            <span class="detail-label">Grade:</span>
+                                            <span class="grade grade-a">A+ (97)</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Credit:</span>
+                                            <span>4</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Type:</span>
+                                            <span>Required</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Textbook:</span>
+                                            <span class="textbook">Instructor-prepared materials</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 课程卡片2 -->
-                        <div class="course-card">
-                            <div class="course-header">
-                                <h3 class="course-title">Abstract Algebra (H)</h3>
-                                <div class="instructor">Prof. Caiheng Li</div>
-                                <div class="course-time">Fall, 2024</div>
-                            </div>
-                            <div class="course-body">
-                                <p class="course-description">
-                                    Basic notions of abstract algebra.
-                                </p>
-                                <div class="course-details">
-                                    <div class="detail-item">
-                                        <span class="detail-label">Grade:</span>
-                                        <span class="grade grade-a">A (93)</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Credit:</span>
-                                        <span>3</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Type:</span>
-                                        <span>Elective</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Textbook:</span>
-                                        <span class="textbook">《抽象代数I》</span>
+                            </article>
+                            
+                            <article class="course-card">
+                                <div class="course-header">
+                                    <h3 class="course-title">Abstract Algebra (H)</h3>
+                                    <div class="instructor">Prof. Caiheng Li</div>
+                                    <div class="course-time">Fall, 2024</div>
+                                </div>
+                                <div class="course-body">
+                                    <p class="course-description">
+                                        Basic notions of abstract algebra.
+                                    </p>
+                                    <div class="course-details">
+                                        <div class="detail-item">
+                                            <span class="detail-label">Grade:</span>
+                                            <span class="grade grade-a">A (93)</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Credit:</span>
+                                            <span>3</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Type:</span>
+                                            <span>Elective</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Textbook:</span>
+                                            <span class="textbook">《抽象代数I》</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </article>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </div>
             </div>
             
-            <!-- 分析内容 -->
-            <div id="analysis-content" class="sub-content">
+            <div id="experience" class="content">
                 <section class="courses-section">
-                    <h2 class="section-title">Analysis Courses</h2>
-                    <div class="course-grid">
-                        <div class="course-card">
-                            <div class="course-header">
-                                <h3 class="course-title">Real Analysis</h3>
-                                <div class="instructor">Prof. John Doe</div>
-                                <div class="course-time">Fall, 2023</div>
-                            </div>
-                            <div class="course-body">
-                                <p class="course-description">
-                                    Introduction to measure theory and Lebesgue integration.
-                                </p>
-                                <div class="course-details">
-                                    <div class="detail-item">
-                                        <span class="detail-label">Grade:</span>
-                                        <span class="grade grade-a">A (95)</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Credit:</span>
-                                        <span>4</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Type:</span>
-                                        <span>Required</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Textbook:</span>
-                                        <span class="textbook">Real Analysis by Royden</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <h2 class="section-title">My Experience</h2>
+                    <p>Experience content will be added here soon.</p>
                 </section>
             </div>
-            
-            <!-- 拓扑内容 -->
-            <div id="topology-content" class="sub-content">
-                <section class="courses-section">
-                    <h2 class="section-title">Topology Courses</h2>
-                    <div class="course-grid">
-                        <div class="course-card">
-                            <div class="course-header">
-                                <h3 class="course-title">General Topology</h3>
-                                <div class="instructor">Prof. Jane Smith</div>
-                                <div class="course-time">Spring, 2023</div>
-                            </div>
-                            <div class="course-body">
-                                <p class="course-description">
-                                    Fundamental concepts of point-set topology.
-                                </p>
-                                <div class="course-details">
-                                    <div class="detail-item">
-                                        <span class="detail-label">Grade:</span>
-                                        <span class="grade grade-a">A- (90)</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Credit:</span>
-                                        <span>3</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Type:</span>
-                                        <span>Required</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Textbook:</span>
-                                        <span class="textbook">Topology by Munkres</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-        
-        <!-- 番剧内容区域 -->
-        <div id="drama" class="content">
-            <h2>番剧内容</h2>
-            <p>这里是番剧的内容区域</p>
-        </div>
-        
-        <!-- 直播内容区域 -->
-        <div id="live" class="content">
-            <h2>直播内容</h2>
-            <p>这里是直播的内容区域</p>
-        </div>
-        
-        <!-- 游戏中心内容区域 -->
-        <div id="game" class="content">
-            <h2>游戏中心</h2>
-            <p>这里是游戏中心的内容区域</p>
-        </div>
-        
-        <!-- 会员购内容区域 -->
-        <div id="vip" class="content">
-            <h2>会员购</h2>
-            <p>这里是会员购的内容区域</p>
-        </div>
-        
-        <!-- 漫画内容区域 -->
-        <div id="comic" class="content">
-            <h2>漫画</h2>
-            <p>这里是漫画的内容区域</p>
-        </div>
-        
-        <!-- 赛事内容区域 -->
-        <div id="match" class="content">
-            <h2>赛事</h2>
-            <p>这里是赛事的内容区域</p>
-        </div>
-        
-        <!-- 下载客户端内容区域 -->
-        <div id="download" class="content">
-            <h2>下载客户端</h2>
-            <p>这里是下载客户端的内容区域</p>
-        </div>
+        </main>
     </div>
     
     <script>
-        // 显示主内容函数
-        function showContent(contentId) {
-            // 隐藏所有内容区域
-            document.querySelectorAll('.content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            // 移除所有导航项的active类
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            // 显示选中的内容区域
-            document.getElementById(contentId).classList.add('active');
-            
-            // 为当前点击的导航项添加active类
-            event.currentTarget.classList.add('active');
-            
-            // 如果是课程页面，默认显示第一个子内容(代数)
-            if (contentId === 'courses') {
-                showSubContent('algebra');
-            }
-        }
-        
-        // 显示子内容函数
-        // 显示主内容函数
-function showContent(contentId, event) {
-    // 隐藏所有内容区域
-    document.querySelectorAll('.content').forEach(content => {
-        content.classList.remove('active');
-    });
-    
-    // 移除所有导航项的active类
-    document.querySelectorAll('.nav-item').forEach(item => {
-        item.classList.remove('active');
-    });
-    
-    // 显示选中的内容区域
-    document.getElementById(contentId).classList.add('active');
-    
-    // 为当前点击的导航项添加active类
-    event.currentTarget.classList.add('active');
-    
-    // 如果是课程页面，默认显示第一个子内容(代数)
-    if (contentId === 'courses') {
-        showSubContent('algebra');
-    }
-}
-
-// 显示子内容函数
-function showSubContent(subContentId, event) {
-    // 隐藏所有子内容
-    document.querySelectorAll('.sub-content').forEach(content => {
-        content.classList.remove('active');
-    });
-    
-    // 显示选中的子内容
-    document.getElementById(`${subContentId}-content`).classList.add('active');
-    
-    // 阻止事件冒泡，避免触发父元素的click事件
-    if(event) event.stopPropagation();
-}
-        
-        
-        // 页面加载完成后初始化显示
         document.addEventListener('DOMContentLoaded', function() {
-            // 默认显示课程内容
-            document.getElementById('courses').classList.add('active');
-            // 为第一个导航项添加active类
-            document.querySelector('.navbar .nav-item:first-child').classList.add('active');
-            // 显示代数子内容
-            showSubContent('algebra');
+            // Cache DOM elements
+            const navItems = document.querySelectorAll('.nav-item');
+            const contents = document.querySelectorAll('.content');
+            
+            // Initialize first content
+            showContent('courses');
+            
+            // Add event listeners to nav items
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const target = this.getAttribute('data-target');
+                    if (target) {
+                        showContent(target);
+                    }
+                });
+            });
+            
+            // Content switching function
+            function showContent(contentId) {
+                // Show loading state
+                document.querySelector('.loading')?.classList.add('active');
+                
+                // Hide all contents
+                contents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Remove active class from all nav items
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Show selected content
+                const targetContent = document.getElementById(contentId);
+                if (targetContent) {
+                    setTimeout(() => {
+                        targetContent.classList.add('active');
+                        document.querySelector(`.nav-item[data-target="${contentId}"]`).classList.add('active');
+                        document.querySelector('.loading')?.classList.remove('active');
+                    }, 100); // Small delay for animation
+                }
+            }
         });
     </script>
 </body>
