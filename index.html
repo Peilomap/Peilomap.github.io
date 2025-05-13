@@ -5,18 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peilomap's GitHub Pages</title>
     <style>
-        /* 全局变量定义 */
         :root {
-            --primary: #3498db;       /* 主色调 */
-            --dark: #2c3e50;          /* 深色 */
-            --light: #ecf0f1;         /* 浅色背景 */
-            --text: #333;             /* 正文颜色 */
-            --radius: 8px;            /* 圆角大小 */
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 阴影效果 */
-            --transition: all 0.3s ease; /* 过渡动画 */
+            --primary: #3498db;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --text: #333;
+            --radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
 
-        /* 全局重置 */
         * {
             margin: 0;
             padding: 0;
@@ -32,13 +30,11 @@
             min-height: 100vh;
         }
 
-        /* 主容器 */
         .container {
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* 头部样式 */
         header {
             text-align: center;
             margin-bottom: 2rem;
@@ -48,8 +44,7 @@
             box-shadow: var(--shadow);
         }
 
-        /* 导航栏样式 */
-        .navbar {
+        .navbar, .sub-nav {
             display: flex;
             background-color: #fff;
             padding: 1rem;
@@ -58,72 +53,50 @@
             border-radius: var(--radius);
         }
 
+        .nav-item, .sub-nav-item {
+            cursor: pointer;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
         .nav-item {
             margin-right: 2rem;
-            cursor: pointer;
             font-size: 1.5rem;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-
-        .nav-item:hover {
-            color: var(--primary);
-        }
-
-        .nav-item.active {
-            color: var(--dark);
-            font-weight: bold;
-        }
-
-        .nav-item.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: var(--dark);
-        }
-
-        /* 子导航栏 */
-        .sub-nav {
-            display: flex;
-            margin-bottom: 1.5rem;
-            background-color: #fff;
-            padding: 0.75rem 1rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
         }
 
         .sub-nav-item {
             margin-right: 1.5rem;
-            cursor: pointer;
             font-size: 1.1rem;
-            position: relative;
             padding: 0.3rem 0;
         }
 
-        .sub-nav-item:hover {
+        .nav-item:hover, .sub-nav-item:hover {
             color: var(--primary);
         }
 
-        .sub-nav-item.active {
+        .nav-item.active, .sub-nav-item.active {
             color: var(--dark);
             font-weight: bold;
         }
 
-        .sub-nav-item.active::after {
+        .nav-item.active::after, .sub-nav-item.active::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 2px;
             background-color: var(--dark);
         }
 
-        /* 内容区域 */
-        .content {
+        .nav-item.active::after {
+            height: 3px;
+        }
+
+        .sub-nav-item.active::after {
+            height: 2px;
+        }
+
+        .content, .sub-content {
             display: none;
             padding: 1.5rem;
             background-color: white;
@@ -132,19 +105,10 @@
             animation: fadeIn 0.5s ease;
         }
 
-        .content.active {
+        .content.active, .sub-content.active {
             display: block;
         }
 
-        .sub-content {
-            display: none;
-        }
-
-        .sub-content.active {
-            display: block;
-        }
-
-        /* 课程部分 */
         .courses-section {
             margin-bottom: 2.5rem;
         }
@@ -157,14 +121,12 @@
             display: inline-block;
         }
 
-        /* 修改为单列布局 */
         .course-list {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
         }
 
-        /* 课程卡片样式 */
         .course-card {
             background-color: white;
             border-radius: var(--radius);
@@ -246,7 +208,6 @@
             background-color: var(--dark);
         }
 
-        /* 页脚 */
         footer {
             text-align: center;
             margin-top: 2rem;
@@ -255,13 +216,11 @@
             font-size: 0.9rem;
         }
 
-        /* 动画 */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 响应式设计 */
         @media (max-width: 768px) {
             .navbar, .sub-nav {
                 flex-wrap: wrap;
@@ -289,14 +248,39 @@
                 width: 100%;
             }
         }
+
+        /* Mobile notice */
+        .mobile-notice {
+            text-align: center;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background-color: #fff3cd;
+            color: #856404;
+            border-radius: var(--radius);
+        }
+
+        /* Link styles */
+        a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* List styles */
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
-    <div style="text-align: center;">
+    <div class="mobile-notice">
         Open on PC for the best browsing experience.
     </div>
     <div class="container">
-        <!-- 头部区域 -->
         <header>
             <h1>Peilomap's GitHub Pages</h1>
             <p>In this page, I will share mathematics with you!</p>
@@ -304,37 +288,24 @@
             <a href="A_Category_View_of_Product_Topology.pdf" download class="download-link">Download: A_Category_View_of_Product_Topology</a>
         </header>
 
-        <!-- 导航栏 -->
         <nav class="navbar">
-            <div class="nav-item" data-target="intro">Introduction</div>
-            <div class="nav-item" data-target="courses">Courses I learned</div>
+            <div class="nav-item active" data-target="courses">Courses I learned</div>
             <div class="nav-item" data-target="experience">Experience</div>
         </nav>
         
-        <!-- 主要内容 -->
         <main>
-            <div id="intro" class="content">
-                <section class="courses-section">
-                    <p>My name is... </p>
-                </section>
-            </div>
-            <!-- 课程内容 -->
-            <div id="courses" class="content">
-                <!-- 子导航 -->
+            <div id="courses" class="content active">
                 <div class="sub-nav">
-                    <div class="sub-nav-item" data-subtarget="alg">Algebra and Number Theory</div>
+                    <div class="sub-nav-item active" data-subtarget="alg">Algebra and Number Theory</div>
                     <div class="sub-nav-item" data-subtarget="ana">Analysis and Probability Theory</div>
                     <div class="sub-nav-item" data-subtarget="top">Topology and Others</div>
                     <div class="sub-nav-item" data-subtarget="nat">Natural Sciences</div>
                     <div class="sub-nav-item" data-subtarget="gen">General Education</div>
                 </div>
                 
-                <!-- 代数课程 -->
-                <div id="alg-content" class="sub-content">
+                <div id="alg-content" class="sub-content active">
                     <section class="courses-section">
                         <div class="course-list">
-                            <!-- 高等线性代数 -->
-
                             <article class="course-card">
                                 <div class="course-header">
                                     <h3 class="course-title">Advanced Linear Algebra I</h3>
@@ -404,7 +375,6 @@
                                 </div>
                             </article>
                             
-                            <!-- 抽象代数 -->
                             <article class="course-card">
                                 <div class="course-header">
                                     <h3 class="course-title">Abstract Algebra (H)</h3>
@@ -500,16 +470,13 @@
                                     </div>
                                 </div>
                             </article>
-                            
                         </div>
                     </section>
                 </div>
                 
-                <!-- 分析课程 -->
                 <div id="ana-content" class="sub-content">
                     <section class="courses-section">
                         <div class="course-list">
-                            <!-- 实分析 -->
                             <article class="course-card">
                                 <div class="course-header">
                                     <h3 class="course-title">Mathematical Analysis I, II, III</h3>
@@ -519,7 +486,7 @@
                                 <div class="course-body">
                                     <p class="course-description">
                                         Introduction to basic mathematical analysis.
-                                        <ul style="margin-left: 20px; margin-top: 10px;">
+                                        <ul>
                                             <li>Limits of sequences and functions.</li>
                                             <li>Point set topology of Euclidean space.</li>
                                             <li>Fourier series.</li>
@@ -546,7 +513,6 @@
                                 </div>
                             </article>
                             
-                            <!-- 复分析 -->
                             <article class="course-card">
                                 <div class="course-header">
                                     <h3 class="course-title">Complex Analysis</h3>
@@ -556,7 +522,7 @@
                                 <div class="course-body">
                                     <p class="course-description">
                                         Theory of functions of a complex variable, including:
-                                        <ul style="margin-left: 20px; margin-top: 10px;">
+                                        <ul>
                                             <li>Analytic functions and Cauchy-Riemann equations</li>
                                             <li>Complex integration and Cauchy's theorem</li>
                                             <li>Residue theory and applications</li>
@@ -624,7 +590,6 @@
                                 </div>
                             </article>
                             
-                            <!-- 复分析 -->
                             <article class="course-card">
                                 <div class="course-header">
                                     <h3 class="course-title">Association Scheme (代数与数论专题)</h3>
@@ -659,7 +624,7 @@
                     </section>
                 </div>
 
-                    <div id="nat-content" class="sub-content">
+                <div id="nat-content" class="sub-content">
                     <section class="courses-section">
                         <div class="course-list">
                             <article class="course-card">
@@ -758,7 +723,7 @@
                     </section>
                 </div>
 
-                    <div id="gen-content" class="sub-content">
+                <div id="gen-content" class="sub-content">
                     <section class="courses-section">
                         <div class="course-list">
                             <article class="course-card">
@@ -858,7 +823,6 @@
                 </div>
             </div>
             
-            <!-- 经验内容 -->
             <div id="experience" class="content">
                 <section class="courses-section">
                     <p>2023.9-2027.6 B.D. in Mathematics, University, Shenzhen, China </p>
@@ -866,49 +830,45 @@
             </div>
         </main>
         
-        <!-- 页脚 -->
         <footer>
             <p>This webpage was created with the assistance of Artificial Intelligence.</p>
             <p>© 2025 Peilomap's GitHub Pages. All rights reserved.</p>
         </footer>
     </div>
     
-    <!-- JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 获取DOM元素
             const navItems = document.querySelectorAll('.nav-item');
             const subNavItems = document.querySelectorAll('.sub-nav-item');
             const contents = document.querySelectorAll('.content');
             const subContents = document.querySelectorAll('.sub-content');
             
-            // 初始化显示第一个内容
+            // Initialize first content
             showContent('courses');
-            showSubContent('algebra');
+            showSubContent('alg');
             
-            // 导航点击事件
+            // Navigation click events
             navItems.forEach(item => {
                 item.addEventListener('click', function() {
-                    const target = this.getAttribute('data-target');
-                    if (target) showContent(target);
+                    const target = this.dataset.target;
+                    showContent(target);
                 });
             });
             
-            // 子导航点击事件
+            // Sub-navigation click events
             subNavItems.forEach(item => {
                 item.addEventListener('click', function() {
-                    const target = this.getAttribute('data-subtarget');
-                    if (target) showSubContent(target);
+                    const target = this.dataset.subtarget;
+                    showSubContent(target);
                 });
             });
             
-            // 显示内容函数
             function showContent(contentId) {
-                // 隐藏所有内容
+                // Hide all content
                 contents.forEach(content => content.classList.remove('active'));
-                // 移除所有active类
+                // Remove all active classes
                 navItems.forEach(item => item.classList.remove('active'));
-                // 显示选中内容
+                // Show selected content
                 const targetContent = document.getElementById(contentId);
                 if (targetContent) {
                     targetContent.classList.add('active');
@@ -916,13 +876,12 @@
                 }
             }
             
-            // 显示子内容函数
             function showSubContent(subContentId) {
-                // 隐藏所有子内容
+                // Hide all sub-content
                 subContents.forEach(content => content.classList.remove('active'));
-                // 移除所有active类
+                // Remove all active classes
                 subNavItems.forEach(item => item.classList.remove('active'));
-                // 显示选中子内容
+                // Show selected sub-content
                 const targetSubContent = document.getElementById(`${subContentId}-content`);
                 if (targetSubContent) {
                     targetSubContent.classList.add('active');
