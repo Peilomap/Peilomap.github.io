@@ -271,14 +271,6 @@
             margin-right: 0.3rem;   /* 右侧外边距 */
         }
 
-        /* 成绩样式 */
-        .grade {
-            display: inline-block;   /* 行内块元素 */
-            padding: 0.2rem 0.5rem; /* 内边距 */
-            border-radius: 4px;      /* 圆角 */
-            font-weight: bold;       /* 加粗 */
-        }
-
         /* 教材信息样式 */
         .textbook {
             font-style: italic;      /* 斜体 */
@@ -371,8 +363,10 @@
     </style>
 </head>
 <body>
-    <h1>Open on PC for the best browsing experience.</h1>
     <!-- 页面主体开始 -->
+    <div style="text-align: center;">
+        Open on PC for the best browsing experience.
+    </div>
     <div class="container">
         <!-- 头部区域 -->
         <header>
@@ -401,7 +395,6 @@
                 <!-- 代数课程内容 -->
                 <div id="algebra-content" class="sub-content active">
                     <section class="courses-section">
-                        <h2 class="section-title">Algebra Courses</h2>
                         <div class="course-grid">
                             <!-- 高级线性代数课程卡片 -->
                             <article class="course-card">
@@ -418,7 +411,7 @@
                                     <div class="course-details">
                                         <div class="detail-item">
                                             <span class="detail-label">Grade:</span>
-                                            <span class="grade">A+ (97)</span>
+                                            <span>A+ (97)</span>
                                         </div>
                                         <div class="detail-item">
                                             <span class="detail-label">Credit:</span>
@@ -450,7 +443,7 @@
                                     <div class="course-details">
                                         <div class="detail-item">
                                             <span class="detail-label">Grade:</span>
-                                            <span class="grade">A (93)</span>
+                                            <span>A (93)</span>
                                         </div>
                                         <div class="detail-item">
                                             <span class="detail-label">Credit:</span>
@@ -474,34 +467,31 @@
                 <!-- 分析课程内容 -->
                 <div id="analysis-content" class="sub-content">
                     <section class="courses-section">
-                        <h2 class="section-title">Analysis Courses</h2>
                         <div class="course-grid">
                             <!-- 实分析课程卡片 -->
                             <article class="course-card">
                                 <div class="course-header">
-                                    <h3 class="course-title">Real Analysis</h3>
-                                    <div class="instructor">Prof. John Doe</div>
-                                    <div class="course-time">Fall, 2023</div>
+                                    <h3 class="course-title">Mathematical Analysis I, II, III</h3>
+                                    <div class="instructor">Prof. Fuming Ma, Prof. Yunhao Fu</div>
+                                    <div class="course-time">Fall, 2023; Spring, 2024; Fall, 2024</div>
                                 </div>
                                 <div class="course-body">
                                     <p class="course-description">
-                                        Introduction to measure theory and Lebesgue integration, covering topics such as:
+                                        Introduction to basic mathematical analysis.
                                         <ul style="margin-left: 20px; margin-top: 10px;">
-                                            <li>Sigma-algebras and measurable spaces</li>
-                                            <li>Lebesgue measure on R^n</li>
-                                            <li>Measurable functions</li>
-                                            <li>Lebesgue integral and its properties</li>
-                                            <li>Convergence theorems</li>
+                                            <li>Limits of sequences and functions.</li>
+                                            <li>Point set topology of Euclidean space.</li>
+                                            <li>Fourier series.</li>
                                         </ul>
                                     </p>
                                     <div class="course-details">
                                         <div class="detail-item">
                                             <span class="detail-label">Grade:</span>
-                                            <span class="grade">A (95)</span>
+                                            <span>A- (91), A+ (97), A(94)</span>
                                         </div>
                                         <div class="detail-item">
                                             <span class="detail-label">Credit:</span>
-                                            <span>4</span>
+                                            <span>5, 5, 5</span>
                                         </div>
                                         <div class="detail-item">
                                             <span class="detail-label">Type:</span>
@@ -509,7 +499,7 @@
                                         </div>
                                         <div class="detail-item">
                                             <span class="detail-label">Textbook:</span>
-                                            <span class="textbook">Real Analysis by Royden</span>
+                                            <span class="textbook">《数学分析教程》（上），（下）</span>
                                         </div>
                                     </div>
                                 </div>
@@ -519,8 +509,8 @@
                             <article class="course-card">
                                 <div class="course-header">
                                     <h3 class="course-title">Complex Analysis</h3>
-                                    <div class="instructor">Prof. Jane Smith</div>
-                                    <div class="course-time">Spring, 2023</div>
+                                    <div class="instructor">Prof. Man Shun Ma</div>
+                                    <div class="course-time">Spring, 2025</div>
                                 </div>
                                 <div class="course-body">
                                     <p class="course-description">
@@ -528,7 +518,6 @@
                                         <ul style="margin-left: 20px; margin-top: 10px;">
                                             <li>Analytic functions and Cauchy-Riemann equations</li>
                                             <li>Complex integration and Cauchy's theorem</li>
-                                            <li>Power series and Laurent series</li>
                                             <li>Residue theory and applications</li>
                                             <li>Conformal mappings</li>
                                         </ul>
@@ -536,7 +525,7 @@
                                     <div class="course-details">
                                         <div class="detail-item">
                                             <span class="detail-label">Grade:</span>
-                                            <span class="grade">A- (90)</span>
+                                            <span>TBC</span>
                                         </div>
                                         <div class="detail-item">
                                             <span class="detail-label">Credit:</span>
@@ -544,11 +533,11 @@
                                         </div>
                                         <div class="detail-item">
                                             <span class="detail-label">Type:</span>
-                                            <span>Elective</span>
+                                            <span>Required</span>
                                         </div>
                                         <div class="detail-item">
                                             <span class="detail-label">Textbook:</span>
-                                            <span class="textbook">Complex Analysis by Ahlfors</span>
+                                            <span class="textbook">Princeton Lectures on Analysis II Complex Analysis</span>
                                         </div>
                                     </div>
                                 </div>
@@ -569,8 +558,8 @@
         
         <!-- 页脚 -->
         <footer>
-            <p>This webpage was created with the assistance of AI technology.</p>
-            <p>© 2024 Peilomap's GitHub Pages. All rights reserved.</p>
+            <p>This webpage was created with the assistance of Artificial Intelligence.</p>
+            <p>© 2025 Peilomap's GitHub Pages. All rights reserved.</p>
         </footer>
     </div>
     
