@@ -1,369 +1,297 @@
 <!DOCTYPE html>
-<!-- HTML5文档类型声明 -->
 <html lang="en">
-<!-- 文档根元素，设置语言为英语 -->
 <head>
-    <!-- 头部开始，包含元数据和样式 -->
     <meta charset="UTF-8">
-    <!-- 设置字符编码为UTF-8 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 响应式视口设置 -->
     <title>Peilomap's GitHub Pages</title>
-    <!-- 页面标题 -->
     <style>
-        /* CSS变量定义开始 */
+        /* 全局变量定义 */
         :root {
-            --primary: #3498db;       /* 主色调蓝色 */
-            --dark: #2c3e50;          /* 深色文字颜色 */
-            --light: #ecf0f1;         /* 浅色背景色 */
-            --text: #333;             /* 默认文字颜色 */
-            --radius: 8px;            /* 默认圆角大小 */
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 默认阴影效果 */
-            --transition: all 0.3s ease; /* 过渡动画效果 */
+            --primary: #3498db;       /* 主色调 */
+            --dark: #2c3e50;          /* 深色 */
+            --light: #ecf0f1;         /* 浅色背景 */
+            --text: #333;             /* 正文颜色 */
+            --radius: 8px;            /* 圆角大小 */
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+            --transition: all 0.3s ease; /* 过渡动画 */
         }
 
-        /* 全局重置样式 */
+        /* 全局重置 */
         * {
-            margin: 0;                /* 移除默认外边距 */
-            padding: 0;               /* 移除默认内边距 */
-            box-sizing: border-box;   /* 盒模型计算方式 */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 默认字体栈 */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* 页面主体样式 */
         body {
-            background-color: #f5f7fa; /* 浅灰色背景 */
-            color: var(--text);       /* 使用CSS变量设置文字颜色 */
-            line-height: 1.6;         /* 行高设置 */
-            padding: 20px;            /* 页面内边距 */
-            min-height: 100vh;        /* 最小高度为视口高度 */
-            display: flex;            /* 使用flex布局 */
-            flex-direction: column;   /* 垂直方向排列 */
+            background-color: #f5f7fa;
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
         }
 
-        /* 主容器样式 - 固定宽度 */
+        /* 主容器 */
         .container {
-            width: 1200px;           /* 固定宽度1200px */
-            margin: 0 auto;          /* 水平居中 */
-            flex: 1;                 /* flex布局中占据剩余空间 */
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* 头部区域样式 */
+        /* 头部样式 */
         header {
-            text-align: center;      /* 文字居中 */
-            margin-bottom: 2rem;     /* 底部外边距 */
-            padding: 2rem 0;        /* 上下内边距 */
-            background-color: white; /* 白色背景 */
-            border-radius: var(--radius); /* 圆角 */
-            box-shadow: var(--shadow); /* 阴影 */
-            transition: var(--transition); /* 过渡效果 */
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem 0;
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
         }
 
-        /* 一级标题样式 */
-        h1 {
-            color: var(--dark);      /* 使用深色 */
-            margin-bottom: 0.5rem;   /* 底部外边距 */
-        }
-
-        /* 主导航栏样式 */
+        /* 导航栏样式 */
         .navbar {
-            display: flex;           /* 弹性布局 */
-            background-color: #fff;  /* 白色背景 */
-            padding: 1rem;           /* 内边距 */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 阴影效果 */
-            margin-bottom: 1.5rem;   /* 底部外边距 */
-            border-radius: var(--radius); /* 圆角 */
-            flex-wrap: wrap;        /* 允许换行 */
+            display: flex;
+            background-color: #fff;
+            padding: 1rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+            border-radius: var(--radius);
         }
 
-        /* 导航项样式 */
         .nav-item {
-            margin-right: 2rem;      /* 右侧外边距 */
-            cursor: pointer;        /* 鼠标指针样式 */
-            color: var(--text);     /* 文字颜色 */
-            font-size: 1.5rem;       /* 字体大小 */
-            position: relative;      /* 相对定位 */
-            padding: 0.5rem 0;      /* 上下内边距 */
-            transition: var(--transition); /* 过渡效果 */
+            margin-right: 2rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            padding: 0.5rem 0;
+            position: relative;
         }
 
-        /* 导航项悬停效果 */
         .nav-item:hover {
-            color: var(--primary);   /* 悬停时变为主色调 */
+            color: var(--primary);
         }
 
-        /* 活动导航项样式 */
         .nav-item.active {
-            color: var(--dark);      /* 深色文字 */
-            font-weight: bold;       /* 加粗 */
+            color: var(--dark);
+            font-weight: bold;
         }
 
-        /* 活动导航项下方指示条 */
         .nav-item.active::after {
-            content: '';             /* 伪元素内容 */
-            position: absolute;      /* 绝对定位 */
-            bottom: 0;               /* 底部对齐 */
-            left: 0;                 /* 左侧对齐 */
-            width: 100%;             /* 宽度100% */
-            height: 3px;             /* 高度 */
-            background-color: var(--dark); /* 深色背景 */
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--dark);
         }
 
-        /* 子导航栏样式 */
+        /* 子导航栏 */
         .sub-nav {
-            display: flex;           /* 弹性布局 */
-            margin-bottom: 1.5rem;   /* 底部外边距 */
-            background-color: #fff;  /* 白色背景 */
-            padding: 0.75rem 1rem;   /* 内边距 */
-            border-radius: var(--radius); /* 圆角 */
-            box-shadow: var(--shadow); /* 阴影 */
+            display: flex;
+            margin-bottom: 1.5rem;
+            background-color: #fff;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
         }
 
-        /* 子导航项样式 */
         .sub-nav-item {
-            margin-right: 1.5rem;    /* 右侧外边距 */
-            cursor: pointer;         /* 鼠标指针样式 */
-            color: var(--text);      /* 文字颜色 */
-            font-size: 1.1rem;       /* 字体大小 */
-            position: relative;      /* 相对定位 */
-            padding: 0.3rem 0;      /* 上下内边距 */
-            transition: var(--transition); /* 过渡效果 */
+            margin-right: 1.5rem;
+            cursor: pointer;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 0.3rem 0;
         }
 
-        /* 子导航项悬停效果 */
         .sub-nav-item:hover {
-            color: var(--primary);   /* 悬停时变为主色调 */
+            color: var(--primary);
         }
 
-        /* 活动子导航项样式 */
         .sub-nav-item.active {
-            color: var(--dark);      /* 深色文字 */
-            font-weight: bold;       /* 加粗 */
+            color: var(--dark);
+            font-weight: bold;
         }
 
-        /* 活动子导航项下方指示条 */
         .sub-nav-item.active::after {
-            content: '';             /* 伪元素内容 */
-            position: absolute;      /* 绝对定位 */
-            bottom: 0;               /* 底部对齐 */
-            left: 0;                 /* 左侧对齐 */
-            width: 100%;             /* 宽度100% */
-            height: 2px;             /* 高度 */
-            background-color: var(--dark); /* 深色背景 */
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--dark);
         }
 
-        /* 内容区域样式 */
+        /* 内容区域 */
         .content {
-            display: none;           /* 默认隐藏 */
-            padding: 1.5rem;         /* 内边距 */
-            background-color: white; /* 白色背景 */
-            border-radius: var(--radius); /* 圆角 */
-            box-shadow: var(--shadow); /* 阴影 */
-            animation: fadeIn 0.5s ease; /* 淡入动画 */
+            display: none;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.5s ease;
         }
 
-        /* 活动内容区域样式 */
         .content.active {
-            display: block;          /* 显示内容 */
+            display: block;
         }
 
-        /* 子内容区域样式 */
         .sub-content {
-            display: none;          /* 默认隐藏 */
+            display: none;
         }
 
-        /* 活动子内容区域样式 */
         .sub-content.active {
-            display: block;         /* 显示内容 */
+            display: block;
         }
 
-        /* 课程部分样式 */
+        /* 课程部分 */
         .courses-section {
-            margin-bottom: 2.5rem;   /* 底部外边距 */
+            margin-bottom: 2.5rem;
         }
 
-        /* 部分标题样式 */
         .section-title {
-            color: var(--dark);      /* 深色文字 */
-            border-bottom: 2px solid var(--primary); /* 底部边框 */
-            padding-bottom: 10px;    /* 底部内边距 */
-            margin-bottom: 20px;     /* 底部外边距 */
-            display: inline-block;   /* 行内块元素 */
+            color: var(--dark);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: inline-block;
         }
 
-        /* 课程网格布局 */
-        .course-grid {
-            display: grid;           /* 网格布局 */
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* 自动填充列 */
-            gap: 1.5rem;             /* 网格间隙 */
+        /* 修改为单列布局 */
+        .course-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
         /* 课程卡片样式 */
         .course-card {
-            background-color: white; /* 白色背景 */
-            border-radius: var(--radius); /* 圆角 */
-            box-shadow: var(--shadow); /* 阴影 */
-            overflow: hidden;        /* 隐藏溢出内容 */
-            transition: var(--transition); /* 过渡效果 */
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
         }
 
-        /* 课程卡片悬停效果 */
         .course-card:hover {
-            transform: translateY(-5px); /* 上移5px */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* 增强阴影 */
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
-        /* 课程头部样式 */
         .course-header {
-            background-color: var(--primary); /* 主色调背景 */
-            color: white;           /* 白色文字 */
-            padding: 1rem;          /* 内边距 */
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
         }
 
-        /* 课程标题样式 */
         .course-title {
-            margin: 0 0 0.5rem;     /* 底部外边距 */
-            font-size: 1.3rem;       /* 字体大小 */
+            margin: 0 0 0.5rem;
+            font-size: 1.3rem;
         }
 
-        /* 讲师和时间信息样式 */
         .instructor, .course-time {
-            font-size: 0.95rem;      /* 字体大小 */
-            opacity: 0.9;            /* 透明度 */
+            font-size: 0.95rem;
+            opacity: 0.9;
         }
 
-        /* 讲师信息特殊样式 */
         .instructor {
-            font-style: italic;      /* 斜体 */
-            margin-bottom: 0.3rem;   /* 底部外边距 */
+            font-style: italic;
+            margin-bottom: 0.3rem;
         }
 
-        /* 课程主体样式 */
         .course-body {
-            padding: 1.5rem;         /* 内边距 */
+            padding: 1.5rem;
         }
 
-        /* 课程描述样式 */
         .course-description {
-            margin-bottom: 1rem;     /* 底部外边距 */
-            line-height: 1.7;        /* 行高 */
+            margin-bottom: 1rem;
+            line-height: 1.7;
         }
 
-        /* 课程详情布局 */
         .course-details {
-            display: flex;           /* 弹性布局 */
-            flex-wrap: wrap;         /* 允许换行 */
-            gap: 1rem;               /* 元素间隙 */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        /* 详情项样式 */
         .detail-item {
-            background-color: var(--light); /* 浅色背景 */
-            padding: 0.5rem 0.75rem; /* 内边距 */
-            border-radius: 4px;      /* 圆角 */
-            font-size: 0.9rem;       /* 字体大小 */
+            background-color: var(--light);
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
         }
 
-        /* 详情标签样式 */
         .detail-label {
-            font-weight: bold;      /* 加粗 */
-            color: var(--dark);     /* 深色文字 */
-            margin-right: 0.3rem;   /* 右侧外边距 */
+            font-weight: bold;
+            color: var(--dark);
+            margin-right: 0.3rem;
         }
 
-        /* 教材信息样式 */
         .textbook {
-            font-style: italic;      /* 斜体 */
+            font-style: italic;
         }
 
-        /* 下载链接样式 */
         .download-link {
-            display: inline-block;   /* 行内块元素 */
-            margin-top: 1rem;        /* 顶部外边距 */
-            padding: 0.5rem 1rem;   /* 内边距 */
-            background-color: var(--primary); /* 主色调背景 */
-            color: white;           /* 白色文字 */
-            text-decoration: none;  /* 去除下划线 */
-            border-radius: var(--radius); /* 圆角 */
-            transition: var(--transition); /* 过渡效果 */
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: var(--transition);
         }
 
-        /* 下载链接悬停效果 */
         .download-link:hover {
-            background-color: var(--dark); /* 深色背景 */
+            background-color: var(--dark);
         }
 
-        /* 页脚样式 */
+        /* 页脚 */
         footer {
-            text-align: center;      /* 文字居中 */
-            margin-top: 2rem;       /* 顶部外边距 */
-            padding: 1rem;          /* 内边距 */
-            color: #666;            /* 灰色文字 */
-            font-size: 0.9rem;      /* 字体大小 */
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            color: #666;
+            font-size: 0.9rem;
         }
 
-        /* 淡入动画 */
+        /* 动画 */
         @keyframes fadeIn {
-            from { 
-                opacity: 0;         /* 初始透明度 */
-                transform: translateY(10px); /* 初始位置 */
-            }
-            to { 
-                opacity: 1;        /* 最终透明度 */
-                transform: translateY(0); /* 最终位置 */
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 响应式设计 - 屏幕宽度小于1200px时的样式 */
-        @media (max-width: 1200px) {
-            .container {
-                width: 100%;       /* 宽度100% */
-                padding: 0 20px;   /* 左右内边距 */
-            }
-        }
-
-        /* 响应式设计 - 屏幕宽度小于768px时的样式 */
+        /* 响应式设计 */
         @media (max-width: 768px) {
-            /* 导航栏响应式 */
             .navbar, .sub-nav {
-                flex-wrap: wrap;    /* 允许换行 */
-                justify-content: center; /* 内容居中 */
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
-            /* 导航项响应式 */
             .nav-item {
-                margin-right: 1rem; /* 右侧外边距 */
-                margin-bottom: 0.5rem; /* 底部外边距 */
-                font-size: 1.2rem;  /* 字体大小 */
+                margin-right: 1rem;
+                margin-bottom: 0.5rem;
+                font-size: 1.2rem;
             }
             
-            /* 子导航项响应式 */
             .sub-nav-item {
-                margin-right: 1rem; /* 右侧外边距 */
-                margin-bottom: 0.5rem; /* 底部外边距 */
-                font-size: 1rem;    /* 字体大小 */
+                margin-right: 1rem;
+                margin-bottom: 0.5rem;
+                font-size: 1rem;
             }
             
-            /* 课程网格响应式 */
-            .course-grid {
-                grid-template-columns: 1fr; /* 单列布局 */
-            }
-            
-            /* 课程详情响应式 */
             .course-details {
-                flex-direction: column; /* 垂直排列 */
-                gap: 0.5rem;       /* 元素间隙 */
+                flex-direction: column;
+                gap: 0.5rem;
             }
             
-            /* 详情项响应式 */
             .detail-item {
-                width: 100%;       /* 宽度100% */
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 页面主体开始 -->
     <div style="text-align: center;">
         Open on PC for the best browsing experience.
     </div>
@@ -376,27 +304,28 @@
             <a href="A_Category_View_of_Product_Topology.pdf" download class="download-link">Download: A_Category_View_of_Product_Topology</a>
         </header>
 
-        <!-- 主导航栏 -->
+        <!-- 导航栏 -->
         <nav class="navbar">
             <div class="nav-item active" data-target="courses">Courses I learned</div>
             <div class="nav-item" data-target="experience">Experience</div>
         </nav>
         
-        <!-- 主要内容区域 -->
+        <!-- 主要内容 -->
         <main>
-            <!-- 课程内容区域 -->
+            <!-- 课程内容 -->
             <div id="courses" class="content active">
-                <!-- 子导航栏 -->
+                <!-- 子导航 -->
                 <div class="sub-nav">
                     <div class="sub-nav-item active" data-subtarget="algebra">Algebra</div>
                     <div class="sub-nav-item" data-subtarget="analysis">Analysis</div>
                 </div>
                 
-                <!-- 代数课程内容 -->
+                <!-- 代数课程 -->
                 <div id="algebra-content" class="sub-content active">
                     <section class="courses-section">
-                        <div class="course-grid">
-                            <!-- 高级线性代数课程卡片 -->
+                        <!-- 使用course-list替代course-grid实现单列布局 -->
+                        <div class="course-list">
+                            <!-- 高级线性代数 -->
                             <article class="course-card">
                                 <div class="course-header">
                                     <h3 class="course-title">Advanced Linear Algebra II (H)</h3>
@@ -429,7 +358,7 @@
                                 </div>
                             </article>
                             
-                            <!-- 抽象代数课程卡片 -->
+                            <!-- 抽象代数 -->
                             <article class="course-card">
                                 <div class="course-header">
                                     <h3 class="course-title">Abstract Algebra (H)</h3>
@@ -464,11 +393,11 @@
                     </section>
                 </div>
                 
-                <!-- 分析课程内容 -->
+                <!-- 分析课程 -->
                 <div id="analysis-content" class="sub-content">
                     <section class="courses-section">
-                        <div class="course-grid">
-                            <!-- 实分析课程卡片 -->
+                        <div class="course-list">
+                            <!-- 实分析 -->
                             <article class="course-card">
                                 <div class="course-header">
                                     <h3 class="course-title">Mathematical Analysis I, II, III</h3>
@@ -505,7 +434,7 @@
                                 </div>
                             </article>
                             
-                            <!-- 复分析课程卡片 -->
+                            <!-- 复分析 -->
                             <article class="course-card">
                                 <div class="course-header">
                                     <h3 class="course-title">Complex Analysis</h3>
@@ -547,7 +476,7 @@
                 </div>
             </div>
             
-            <!-- 经验内容区域 -->
+            <!-- 经验内容 -->
             <div id="experience" class="content">
                 <section class="courses-section">
                     <h2 class="section-title">My Experience</h2>
@@ -563,56 +492,42 @@
         </footer>
     </div>
     
-    <!-- JavaScript代码 -->
+    <!-- JavaScript -->
     <script>
-        // 当DOM内容加载完成后执行
         document.addEventListener('DOMContentLoaded', function() {
-            // 缓存DOM元素以提高性能
+            // 获取DOM元素
             const navItems = document.querySelectorAll('.nav-item');
             const subNavItems = document.querySelectorAll('.sub-nav-item');
             const contents = document.querySelectorAll('.content');
             const subContents = document.querySelectorAll('.sub-content');
             
-            // 初始化显示第一个内容区域
+            // 初始化显示第一个内容
             showContent('courses');
             showSubContent('algebra');
             
-            // 为主导航项添加点击事件监听器
+            // 导航点击事件
             navItems.forEach(item => {
                 item.addEventListener('click', function() {
                     const target = this.getAttribute('data-target');
-                    if (target) {
-                        showContent(target);
-                    }
+                    if (target) showContent(target);
                 });
             });
             
-            // 为子导航项添加点击事件监听器
+            // 子导航点击事件
             subNavItems.forEach(item => {
                 item.addEventListener('click', function() {
                     const target = this.getAttribute('data-subtarget');
-                    if (target) {
-                        showSubContent(target);
-                    }
+                    if (target) showSubContent(target);
                 });
             });
             
-            /**
-             * 显示指定内容区域
-             * @param {string} contentId - 要显示的内容区域ID
-             */
+            // 显示内容函数
             function showContent(contentId) {
-                // 隐藏所有内容区域
-                contents.forEach(content => {
-                    content.classList.remove('active');
-                });
-                
-                // 移除所有导航项的active类
-                navItems.forEach(item => {
-                    item.classList.remove('active');
-                });
-                
-                // 显示选中的内容区域
+                // 隐藏所有内容
+                contents.forEach(content => content.classList.remove('active'));
+                // 移除所有active类
+                navItems.forEach(item => item.classList.remove('active'));
+                // 显示选中内容
                 const targetContent = document.getElementById(contentId);
                 if (targetContent) {
                     targetContent.classList.add('active');
@@ -620,22 +535,13 @@
                 }
             }
             
-            /**
-             * 显示指定子内容区域
-             * @param {string} subContentId - 要显示的子内容区域ID
-             */
+            // 显示子内容函数
             function showSubContent(subContentId) {
-                // 隐藏所有子内容区域
-                subContents.forEach(content => {
-                    content.classList.remove('active');
-                });
-                
-                // 移除所有子导航项的active类
-                subNavItems.forEach(item => {
-                    item.classList.remove('active');
-                });
-                
-                // 显示选中的子内容区域
+                // 隐藏所有子内容
+                subContents.forEach(content => content.classList.remove('active'));
+                // 移除所有active类
+                subNavItems.forEach(item => item.classList.remove('active'));
+                // 显示选中子内容
                 const targetSubContent = document.getElementById(`${subContentId}-content`);
                 if (targetSubContent) {
                     targetSubContent.classList.add('active');
