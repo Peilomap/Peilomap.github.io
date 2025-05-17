@@ -7,6 +7,7 @@
     <style>
         :root {
             --primary: #3498db;
+            --secondary: #2384c5;
             --dark: #2c3e50;
             --light: #ecf0f1;
             --text: #333;
@@ -196,11 +197,11 @@
         .download-link {
             display: inline-block;
             margin-top: 0rem;
-            padding: 0rem 0rem;
-            background-color: var(--primary);
+            padding: 0.1rem 0.1rem;
+            background-color: var(--secondary);
             color: white;
             text-decoration: none;
-            border-radius: var(--radius);
+            border-radius: 5px;
             transition: var(--transition);
         }
 
@@ -275,6 +276,32 @@
             margin-top: 5px;
             margin-bottom: 10px;
         }
+
+        /* Personal info styles */
+        .info-card {
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: var(--dark);
+            display: inline-block;
+            min-width: 120px;
+        }
+
+        /* Optimized CSS */
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
     
@@ -286,17 +313,43 @@
         <header>
             <h1>Peilomap's GitHub Pages</h1>
             <p>In this page, I will share mathematics with you!</p>
-            <p>The following article is my recent work, please have a look.</p>
-            <a href="A_Category_View_of_Product_Topology.pdf" download class="download-link">Download: A_Category_View_of_Product_Topology</a>
+            <p>The following article is my recent work. Please have a look.</p>
+            <a href="A_Category_View_of_Product_Topology.pdf">A_Category_View_of_Product_Topology</a>
         </header>
 
         <nav class="navbar">
-            <div class="nav-item active" data-target="courses">Courses I learned</div>
+            <div class="nav-item active" data-target="personal">Personal Information</div>
+            <div class="nav-item" data-target="courses">Courses I learned</div>
             <div class="nav-item" data-target="experience">Experience</div>
         </nav>
         
         <main>
-            <div id="courses" class="content active">
+            <div id="personal" class="content active">
+                <div class="info-card">
+                    <div class="info-item">
+                        <span class="info-label">Name:</span>
+                        <span>Peilomap</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Education:</span>
+                        <span>B.D. in Mathematics (2023-2027)</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Institution:</span>
+                        <span>University, Shenzhen, China</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Research Interests:</span>
+                        <span>Mathematics, Topology</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Contact:</span>
+                        <span>Your contact information here</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="courses" class="content">
                 <div class="sub-nav">
                     <div class="sub-nav-item active" data-subtarget="alg">Algebra and Number Theory</div>
                     <div class="sub-nav-item" data-subtarget="ana">Analysis and Probability Theory</div>
@@ -319,7 +372,7 @@
                                 </div>
                                 <div class="course-body">
                                     <p class="course-description">
-                                        This course begins with matrix arithmetic. Understanding matrices as linear transformations of Euclidean spaces, we then naturally transition into the study of linear spaces and linear mappings. Finally, we introduce the concept of the determinant of a matrix.
+                                        This course begins with matrix arithmetic. Understanding matrices as linear transformations of Euclidean spaces, we naturally transition into studying linear spaces and linear mappings. Finally, we introduce the concept of the determinant of a matrix.
                                     </p>
                                     <div class="course-details">
                                         <div class="detail-item">
@@ -359,18 +412,18 @@
                                     <p class="course-description">
                                         This course is divided into three parts. The first part is about some preliminaries and basic algebraic objects:
                                         <ul>
-                                            <li>Definitions and examples of group, ring and field.</li>
-                                            <li>Definitions and examples of module over a ring, and review of several results in ALAI in the language of module.</li>
+                                            <li>Definitions and examples of group, ring, and field.</li>
+                                            <li>Definitions and examples of module over a ring, and review of several results in ALAI in the module language.</li>
                                             <li>Equivalent relation and quotient.</li>
                                             <li>Polynomials and polynomial ring.</li>
                                             <li>Dual and double dual.</li>
-                                            <li>Tensor, symmetric and exterior power.</li>
+                                            <li>Tensor, symmetric, and exterior power.</li>
                                         </ul>
-                                        The second part is about bilinear form, definiteness and inner product:
+                                        The second part is about bilinear form, definiteness, and inner product:
                                         <ul>
                                             <li>Bilinear form and bilinear space.</li>
                                             <li>Sesquilinear form and quadratic form.</li>
-                                            <li>Positive definiteness, positive semi-definiteness, negative definiteness and negative semi-definiteness.</li>
+                                            <li>Positive definiteness, positive semi-definiteness, negative definiteness, and negative semi-definiteness.</li>
                                             <li>Inner product and adjoint operator.</li>
                                             <li>Diagonalization and SVD.</li>
                                             <li>Optimization.</li>
@@ -420,7 +473,7 @@
                                 </div>
                                 <div class="course-body">
                                     <p class="course-description">
-                                        Basic notions of abstract algebra. Some additional topics on finite group such as semi-direct product.
+                                        Basic notions of abstract algebra. Some additional topics on finite groups, such as the semi-direct product.
                                     </p>
                                     <div class="course-details">
                                         <div class="detail-item">
@@ -457,7 +510,7 @@
                                 </div>
                                 <div class="course-body">
                                     <p class="course-description">
-                                        Basic notions of category theory. Some important results of modules. (Chapter 1 and 3 of the textbook.)
+                                        Basic notions of category theory. Some important results of modules. (Chapters 1 and 3 of the textbook.)
                                     </p>
                                     <div class="course-details">
                                         <div class="detail-item">
@@ -494,7 +547,7 @@
                                 </div>
                                 <div class="course-body">
                                     <p class="course-description">
-                                        This course is about elementary number theory and a little algebraic number theory. However, the midterm and final exams are extremely difficult for students who have never participate in mathematical Olympiad! Thus, I got a very bad grade in this course.
+                                        This course is about elementary number theory and a little algebraic number theory. However, the midterm and final exams are extremely difficult for students who have never participated in a mathematical Olympiad! Thus, I got an awful grade in this course.
                                     </p>
                                     <div class="course-details">
                                         <div class="detail-item">
@@ -541,12 +594,12 @@
                                         <ul>
                                             <li>Limits and series of sequences and functions.</li>
                                             <li>Continuity, differentiability, series of functions.</li>
-                                            <li>Integration, Lebesgue measure and theorem, applications of integration.</li>
+                                            <li>Integration, Lebesgue measure, and theorem, integration applications.</li>
                                             <li>Incomplete integral, including integral with parameters。</li>
                                             <li>Point set topology of Euclidean space.</li>
-                                            <li>Muti-variables function and its continuity, differentiability, integration.</li>
-                                            <li>Integration along curves and surfaces. Guass formula and Stokes formula.</li>
-                                            <li>Mathematics of field in Physics.</li>
+                                            <li> Multivariable functions and their continuity, differentiability, and integration.</li>
+                                            <li>Integration along curves and surfaces. Gauss' formula and Stokes' formula.</li>
+                                            <li>Mathematics of the field in Physics.</li>
                                         </ul>
                                         Additional topics on elementary Fourier analysis.
                                     </p>
@@ -665,7 +718,7 @@
                                 </div>
                                 <div class="course-body">
                                     <p class="course-description">
-                                        Covering chapter 1-7, 9-11 of the textbook.
+                                        Covering chapters 1-7, 9-11 of the textbook.
                                     </p>
                                     <div class="course-details">
                                         <div class="detail-item">
@@ -1061,18 +1114,22 @@
             const subContents = document.querySelectorAll('.sub-content');
             
             // Initialize first content
-            showContent('courses');
-            showSubContent('alg');
+            showContent('personal');
             
             // Navigation click events
             navItems.forEach(item => {
                 item.addEventListener('click', function() {
                     const target = this.dataset.target;
                     showContent(target);
+                    
+                    // For courses tab, also show the first sub-content
+                    if (target === 'courses') {
+                        showSubContent('alg');
+                    }
                 });
             });
             
-            // Sub-navigation click events
+            // Sub-navigation click events (only for courses tab)
             subNavItems.forEach(item => {
                 item.addEventListener('click', function() {
                     const target = this.dataset.subtarget;
