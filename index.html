@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Peilomap's GitHub Pages</title>
+
     <style>
         :root {
-            --primary: #3498db;
-            --secondary: #2384c5;
+            --primary: #00bfff;
             --dark: #2c3e50;
             --light: #ecf0f1;
-            --text: #333;
+            --text: #333333;
             --radius: 8px;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
@@ -24,11 +25,29 @@
         }
 
         body {
-            background-color: #f5f7fa;
+            background-color: var(--light);
             color: var(--text);
-            line-height: 1.6;
-            padding: 20px;
+            line-height: 1.5;
+            padding: 10px;
             min-height: 100vh;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            color: #666;
+            font-size: 1rem;
+        }
+
+        a {
+            color: inherit !important;
+            transition: var(--transition);
+            font-style: italic;
+        }
+
+        a:hover {
+            opacity: 0.9;
         }
 
         .container {
@@ -36,18 +55,14 @@
             margin: 0 auto;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding: 2rem 0;
-            background-color: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .navbar, .sub-nav {
             display: flex;
-            background-color: #fff;
+            background-color: white;
             padding: 1rem;
             box-shadow: var(--shadow);
             margin-bottom: 1.5rem;
@@ -57,27 +72,22 @@
         .nav-item, .sub-nav-item {
             cursor: pointer;
             position: relative;
-            padding: 0.5rem 0;
+            padding: 0.5rem 0.5;
+            transition: var(--transition);
         }
 
         .nav-item {
-            margin-right: 2rem;
+            margin-right: 1.5rem;
             font-size: 1.5rem;
         }
 
         .sub-nav-item {
             margin-right: 1.5rem;
-            font-size: 1.1rem;
-            padding: 0.3rem 0;
+            font-size: 1rem;
         }
 
         .nav-item:hover, .sub-nav-item:hover {
             color: var(--primary);
-        }
-
-        .nav-item.active, .sub-nav-item.active {
-            color: var(--dark);
-            font-weight: bold;
         }
 
         .nav-item.active::after, .sub-nav-item.active::after {
@@ -87,45 +97,46 @@
             left: 0;
             width: 100%;
             background-color: var(--dark);
-        }
-
-        .nav-item.active::after {
-            height: 3px;
-        }
-
-        .sub-nav-item.active::after {
             height: 2px;
         }
 
         .content, .sub-content {
             display: none;
-            padding: 1.5rem;
+            padding: 1rem;
             background-color: white;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .info-card {
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-item {
+            padding: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: var(--dark);
+            display: inline-block;
+            min-width: 160px;
         }
 
         .content.active, .sub-content.active {
             display: block;
         }
 
-        .courses-section {
-            margin-bottom: 2.5rem;
-        }
-
-        .section-title {
-            color: var(--dark);
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-
         .course-list {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
         .course-card {
@@ -149,26 +160,25 @@
 
         .course-title {
             margin: 0 0 0.5rem;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
+            font-weight: bold;
         }
 
         .instructor, .course-time {
-            font-size: 0.95rem;
-            opacity: 0.9;
+            font-size: 1rem;
         }
 
         .instructor {
             font-style: italic;
-            margin-bottom: 0.3rem;
         }
 
         .course-body {
-            padding: 1.5rem;
+            padding: 1rem;
         }
 
         .course-description {
             margin-bottom: 1rem;
-            line-height: 1.7;
+            line-height: 1.5;
         }
 
         .course-details {
@@ -179,47 +189,88 @@
 
         .detail-item {
             background-color: var(--light);
-            padding: 0.5rem 0.75rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
+            padding: 0.5rem 0.5rem;
+            border-radius: var(--radius);
+            font-size: 1rem;
         }
 
         .detail-label {
             font-weight: bold;
             color: var(--dark);
-            margin-right: 0.3rem;
+            margin-right: 0.5rem;
         }
 
         .textbook {
             font-style: italic;
         }
 
-        .download-link {
-            display: inline-block;
-            margin-top: 0rem;
-            padding: 0.1rem 0.1rem;
-            background-color: var(--secondary);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: var(--transition);
-        }
-
-        .download-link:hover {
-            background-color: var(--dark);
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 2rem;
+        .overview-section {
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
             padding: 1rem;
-            color: #666;
-            font-size: 0.9rem;
+            margin-bottom: 1rem;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .course-square {
+            width: 180px;
+            height: 90px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px;
+            font-size: 1.25rem;
+            text-align: center;
+            word-break: break-word;
+            color: white;
+            text-shadow: 0 0 2px rgba(0,0,0,0.5);
+            overflow: hidden;
+            line-height: 1.5;
+        }
+
+        .overview-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+            justify-content: center;
+        }
+
+        .course-square:hover {
+            transform: scale(1.02);
+            z-index: 1;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        }
+
+        .square-alg { background-color: #00B383; }
+        .square-ana { background-color: #E60073; }
+        .square-top { background-color: #8A2BE2; }
+        .square-oth { background-color: #FFC800; }
+        .square-nat { background-color: #FF7F00; }
+        .square-gen { background-color: #00E5E5; }
+
+        .overview-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+            font-size: 1rem;
+            justify-content: center;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 8px;
         }
 
         @media (max-width: 768px) {
@@ -250,7 +301,6 @@
             }
         }
 
-        /* Mobile notice */
         .mobile-notice {
             text-align: center;
             margin-bottom: 1rem;
@@ -260,121 +310,11 @@
             border-radius: var(--radius);
         }
 
-        /* Link styles */
-        a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* List styles */
-        ul {
-            margin-left: 20px;
-            margin-top: 5px;
-            margin-bottom: 10px;
-        }
-
-        /* Personal info styles */
-        .info-card {
-            background-color: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .info-item {
-            margin-bottom: 1rem;
-            line-height: 1.7;
-        }
-
-        .info-label {
-            font-weight: bold;
-            color: var(--dark);
-            display: inline-block;
-            min-width: 120px;
-        }
-
-        /* Optimized CSS */
-        .hidden {
-            display: none;
-        }
-
-        /* Overview styles */
-        .overview-section {
-            background-color: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .course-square {
-    width: 120px;  /* 增大宽度 */
-    height: 60px;  /* 适当高度 */
-    border-radius: 5px;
-    cursor: pointer;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
-    font-size: 0.7rem;
-    text-align: center;
-    word-break: break-word;  /* 允许文字换行 */
-    color: white;
-    text-shadow: 0 0 2px rgba(0,0,0,0.5);
-    overflow: hidden;  /* 防止文字溢出 */
-    line-height: 1.2;  /* 调整行高 */
-}
-
-.overview-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 15px;
-    justify-content: center;  /* 居中显示 */
-}
-
-        .course-square:hover::after {
-            display: none;
-        }
-
-        .course-square:hover {
-            transform: scale(1.05);
-            z-index: 1;
-            box-shadow: 0 0 5px rgba(0,0,0,0.3);
-        }
-
-        /* Color coding for course categories */
-        .square-alg { background-color: #3498db; }
-        .square-ana { background-color: #e74c3c; }
-        .square-top { background-color: #2ecc71; }
-        .square-nat { background-color: #f39c12; }
-        .square-gen { background-color: #9b59b6; }
-
-        /* Legend for overview */
-        .overview-legend {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 15px;
-            font-size: 0.9rem;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .legend-color {
-            width: 15px;
-            height: 15px;
-            border-radius: 3px;
+        .empty-notice {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            font-style: italic;
         }
     </style>
 </head>
@@ -383,64 +323,66 @@
     <div class="mobile-notice">
         Open on PC for the best browsing experience.
     </div>
-    <div class="container">
-        <header>
-            <h1>Peilomap's GitHub Pages</h1>
-            <p>In this page, I will share mathematics with you!</p>
-            <p>The following article is my recent work. Please have a look.</p>
-            <a href="A_Category_View_of_Product_Topology.pdf">A_Category_View_of_Product_Topology</a>
-        </header>
 
+    <div class="container">
+        <h1>Peilomap's Homepage</h1>
+        <p>I will share mathematics with you in this page.</p>
+        <p>Recently, I wrote an article introducing the product topology from the perspective of category theory: 
+        <a href="A_Category_View_of_Product_Topology.pdf">A_Category_View_of_Product_Topology</a>.</p>
+        <div style="margin-bottom: 25px;"></div>
+        
         <nav class="navbar">
-            <div class="nav-item active" data-target="personal">Personal Information</div>
+            <div class="nav-item active" data-target="CV">Personal Information</div>
             <div class="nav-item" data-target="courses">Courses I learned</div>
             <div class="nav-item" data-target="experience">Experience</div>
         </nav>
         
         <main>
-            <div id="personal" class="content active">
+            <div id="CV" class="content active">
                 <div class="info-card">
                     <div class="info-item">
-                        <span class="info-label">Name:</span>
+                        <span class="info-label">Name</span>
                         <span>Peilomap</span>
                     </div>
                     <div class="info-item">
-                        <span class="info-label">Education:</span>
-                        <span>B.D. in Mathematics (2023-2027)</span>
+                        <span class="info-label">Education</span>
+                        <span>B.S. in Mathematics</span>
                     </div>
                     <div class="info-item">
-                        <span class="info-label">Institution:</span>
-                        <span>University, Shenzhen, China</span>
+                        <span class="info-label">Institution</span>
+                        <span>Some University, Shenzhen, China</span>
                     </div>
                     <div class="info-item">
-                        <span class="info-label">Research Interests:</span>
-                        <span>Mathematics, Topology</span>
+                        <span class="info-label">Research Interests</span>
+                        <span>Algebra and related fields</span>
                     </div>
                     <div class="info-item">
-                        <span class="info-label">Contact:</span>
-                        <span>Your contact information here</span>
+                        <span class="info-label">Contact</span>
+                        <span>peilomap@gmail.com (Rarely checked)</span>
                     </div>
                 </div>
             </div>
-            
+
             <div id="courses" class="content">
                 <div class="overview-section">
-                    <h3 class="section-title">Courses Overview</h3>
-                    <div class="overview-grid" id="overviewGrid">
-                        <!-- Course squares will be generated by JavaScript -->
-                    </div>
+                    Overview
+                    <div class="overview-grid" id="overviewGrid"></div>
                     <div class="overview-legend">
                         <div class="legend-item">
                             <div class="legend-color square-alg"></div>
-                            <span>Algebra & Number Theory</span>
+                            <span>Algebra and Number Theory</span>
                         </div>
                         <div class="legend-item">
                             <div class="legend-color square-ana"></div>
-                            <span>Analysis & Probability</span>
+                            <span>Analysis and Probability</span>
                         </div>
                         <div class="legend-item">
                             <div class="legend-color square-top"></div>
-                            <span>Topology & Others</span>
+                            <span>Topology and Geometry</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color square-oth"></div>
+                            <span>Others</span>
                         </div>
                         <div class="legend-item">
                             <div class="legend-color square-nat"></div>
@@ -455,8 +397,9 @@
                 
                 <div class="sub-nav">
                     <div class="sub-nav-item active" data-subtarget="alg">Algebra and Number Theory</div>
-                    <div class="sub-nav-item" data-subtarget="ana">Analysis and Probability Theory</div>
-                    <div class="sub-nav-item" data-subtarget="top">Topology and Others</div>
+                    <div class="sub-nav-item" data-subtarget="ana">Analysis and Probability</div>
+                    <div class="sub-nav-item" data-subtarget="top">Topology and Geometry</div>
+                    <div class="sub-nav-item" data-subtarget="oth">Others</div>
                     <div class="sub-nav-item" data-subtarget="nat">Natural Science</div>
                     <div class="sub-nav-item" data-subtarget="gen">General Education</div>
                 </div>
@@ -464,218 +407,285 @@
                 <div id="alg-content" class="sub-content active">
                     <section class="courses-section">
                         <div class="course-list">
-                            
                             <article class="course-card">
                                 <div class="course-header">
-                                    <h3 class="course-title">Advanced Linear Algebra I (MA107)</h3>
-                                    <div class="instructor">Prof. HU Yong
-                                        <a href="https://math.sustech.edu.cn/c/huyong?lang=en" download class="download-link">School's Homepage</a>
+                                    <div class="course-title">Advanced Linear Algebra I</div>
+
+                                    <div class="instructor">Prof. HU Yong &nbsp;
+                                        <a>
+                                        Personal Hompage</a> &nbsp;
+                                        <a href="https://mathscinet.ams.org/mathscinet/author?authorId=899116">
+                                        MathSciNet</a> &nbsp;
+                                        <a href="https://math.sustech.edu.cn/c/huyong?lang=en">
+                                        Faculty Page</a>
                                     </div>
-                                    <div class="course-time">Fall, 2023</div>
+
+                                    <div class="course-time">MA107, Fall, 2023</div>
                                 </div>
+
                                 <div class="course-body">
-                                    <p class="course-description">
-                                        This course begins with matrix arithmetic. Understanding matrices as linear transformations of Euclidean spaces, we naturally transition into studying linear spaces and linear mappings. Finally, we introduce the concept of the determinant of a matrix.
-                                    </p>
+                                    <div class="course-description">
+                                        This course begins with matrix arithmetic. Understanding matrices as linear transformations of Euclidean spaces, we naturally transition into studying linear spaces and linear mappings. Finally, we introduce concepts of the determinant and the trace of a matrix.
+                                    </div>
+
                                     <div class="course-details">
                                         <div class="detail-item">
-                                            <span class="detail-label">Grade:</span>
-                                            <span>A-(90)</span>
+                                            <span class="detail-label">Grade</span>
+                                            <span>A- (90)</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Language:</span>
-                                            <span>Chinese, English(only for instructor's board writing)</span>
+                                            <span class="detail-label">Textbook</span>
+                                            <span class="textbook">Instructor-organized Textbook (Unpublished)</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Textbook:</span>
-                                            <span class="textbook">Instructor-organized Textbook(Unpublished)</span>
+                                            <span class="detail-label">Language</span>
+                                            <span>Chinese, English</span>
                                         </div>
+                                        
                                         <div class="detail-item">
-                                            <span class="detail-label">Type:</span>
+                                            <span class="detail-label">Type</span>
                                             <span>Required</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Credit:</span>
+                                            <span class="detail-label">Credit</span>
                                             <span>4</span>
                                         </div>                              
                                     </div>
                                 </div>
                             </article>
-                            
+
                             <article class="course-card">
                                 <div class="course-header">
-                                    <h3 class="course-title">Advanced Linear Algebra II (H) (MA121)</h3>
-                                    <div class="instructor">Prof. Ziqing Xiang
-                                    <a href="https://ziqing.org/" download class="download-link">Personal homepage</a>
-                                    <a href="https://math.sustech.edu.cn/c/xiangziqing?lang=en" download class="download-link">School's homepage</a>
+                                    <div class="course-title">Advanced Linear Algebra II (H)</div>
+
+                                    <div class="instructor">Prof. XIANG Ziqing &nbsp;
+                                        <a href="https://ziqing.org/">
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="https://mathscinet.ams.org/mathscinet/author?authorId=982072">
+                                        MathSciNet</a> &nbsp;
+                                        <a href="https://math.sustech.edu.cn/c/xiangziqing?lang=en">
+                                        Faculty Page</a>
                                     </div>
-                                    <div class="course-time">Spring, 2024</div>
+
+                                    <div class="course-time">MA121, Spring, 2024</div>
                                 </div>
+
                                 <div class="course-body">
-                                    <p class="course-description">
-                                        This course is divided into three parts. The first part is about some preliminaries and basic algebraic objects:
-                                        <ul>
-                                            <li>Definitions and examples of group, ring, and field.</li>
-                                            <li>Definitions and examples of module over a ring, and review of several results in ALAI in the module language.</li>
-                                            <li>Equivalent relation and quotient.</li>
-                                            <li>Polynomials and polynomial ring.</li>
+                                    <div class="course-description">
+                                        This course is divided into three parts. The first part is preliminaries and basic algebraic objects:
+                                        <ul style="margin-left: 2em;">
+                                            <li>Group, ring, and field.</li>
+                                            <li>Modules over a ring. Review advanced linear algebra I in the module language.</li>
+                                            <li>Equivalent relation and quotient set.</li>
+                                            <li>Polynomial ring.</li>
                                             <li>Dual and double dual.</li>
-                                            <li>Tensor, symmetric, and exterior power.</li>
+                                            <li>Tensor algebra and symmetric/exterior power.</li>
                                         </ul>
-                                        The second part is about bilinear form, definiteness, and inner product:
-                                        <ul>
-                                            <li>Bilinear form and bilinear space.</li>
-                                            <li>Sesquilinear form and quadratic form.</li>
-                                            <li>Positive definiteness, positive semi-definiteness, negative definiteness, and negative semi-definiteness.</li>
-                                            <li>Inner product and adjoint operator.</li>
-                                            <li>Diagonalization and SVD.</li>
+                                        The second part is bilinear form, definiteness, and inner product, which is the classical contexts of advanced linear algebra II:
+                                        <ul style="margin-left: 2em;">
+                                            <li>Bilinear/Sesquilinear/Quadratic form/space.</li>
+                                            <li>Positive/Nagative (semi-)definiteness</li>
+                                            <li>Adjoint operator.</li>
+                                            <li>Diagonalization and singular value decomposition(SVD).</li>
                                             <li>Optimization.</li>
                                         </ul>
-                                        The third part is about Jordan-Chevalley decomposition.
-                                        <ul>
+                                        The third part is Jordan-Chevalley decomposition. The instructor provides a toy module as a motivation and a high view point of the decomposition:
+                                        <!-- 把那个“三角形”放进来。 -->
+                                        <ul style="margin-left: 2em;">
                                             <li>A toy model.</li>
-                                            <li>Generalized eigenspace.</li>
-                                            <li>Semisimple and nilpotent operator.</li>
+                                            <li>Generalized eigenvalue/eigenvector/eigenspace.</li>
+                                            <li>Semisimple/Nilpotent operator.</li>
                                             <li>Jordan-Chevalley decomposition..</li>
                                             <li>Jordan normal form and matrix exponential.</li>
-                                            <li>Modules over PID.</li>
+                                            <li>Modules over a principal ideal domain(PID).</li>
                                         </ul>
-                                    </p>
+                                    </div>
+
                                     <div class="course-details">
                                         <div class="detail-item">
-                                            <span class="detail-label">Grade:</span>
+                                            <span class="detail-label">Grade</span>
                                             <span>A+ (97)</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Language:</span>
-                                            <span>English, Chinese(only for talking language)</span>
-                                        </div>
-                                        <div class="detail-item">
-                                            <span class="detail-label">Textbook:</span>
+                                            <span class="detail-label">Textbook</span>
                                             <span class="textbook">Instructor-prepared Materials</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Type:</span>
+                                            <span class="detail-label">Language</span>
+                                            <span>English, Chinese</span>
+                                        </div>
+                                        
+                                        <div class="detail-item">
+                                            <span class="detail-label">Type</span>
                                             <span>Required</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Credit:</span>
+                                            <span class="detail-label">Credit</span>
                                             <span>4</span>
-                                        </div>
+                                        </div>                              
                                     </div>
                                 </div>
                             </article>
-                            
+
                             <article class="course-card">
                                 <div class="course-header">
-                                    <h3 class="course-title">Abstract Algebra (H) (MA219)</h3>
-                                    <div class="instructor">Prof. Caiheng Li
-                                    <a href="https://math.sustech.edu.cn/c/licaiheng?lang=en" download class="download-link">School's homepage</a>
+                                    <div class="course-title">Abstract Algebra (H)</div>
+
+                                    <div class="instructor">Prof. LI Caiheng &nbsp;
+                                        <a>
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="https://mathscinet.ams.org/mathscinet/author?authorId=305568">
+                                        MathSciNet</a> &nbsp;
+                                        <a href="https://math.sustech.edu.cn/c/licaiheng?lang=en">
+                                        Faculty Page</a>
                                     </div>
-                                    <div class="course-time">Fall, 2024</div>
+
+                                    <div class="course-time">MA219, Fall, 2024</div>
                                 </div>
+
                                 <div class="course-body">
-                                    <p class="course-description">
-                                        Basic notions of abstract algebra. Some additional topics on finite groups, such as the semi-direct product.
-                                    </p>
+                                    <div class="course-description">
+                                        Classical contents of abstract algebra are covered. Some additional topics on finite groups such as the semi-direct product are mentioned.
+                                    </div>
+
                                     <div class="course-details">
                                         <div class="detail-item">
-                                            <span class="detail-label">Grade:</span>
+                                            <span class="detail-label">Grade</span>
                                             <span>A (93)</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Language:</span>
-                                            <span>English, Chinese(only for the textbook)</span>
+                                            <span class="detail-label">Textbook</span>
+                                            <span class="textbook">《抽象代数 I 》 赵春来，徐明曜 (Abstract Algebra I by ZHAO Chunlai, XU Mingyao)</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Textbook:</span>
-                                            <span class="textbook">《抽象代数I》赵春来，徐明曜 (Abstract Algebra I by ZHAO Chunlai, XU Mingyao)</span>
+                                            <span class="detail-label">Language</span>
+                                            <span>English, Chinese</span>
                                         </div>
+                                        
                                         <div class="detail-item">
-                                            <span class="detail-label">Type:</span>
+                                            <span class="detail-label">Type</span>
                                             <span>Elective</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Credit:</span>
+                                            <span class="detail-label">Credit</span>
                                             <span>3</span>
-                                        </div>
+                                        </div>                              
                                     </div>
                                 </div>
                             </article>
 
                             <article class="course-card">
                                 <div class="course-header">
-                                    <h3 class="course-title">Applied Abstract Algebra (MA235)</h3>
-                                    <div class="instructor">Prof. Iryna Kashuba
-                                    <a href="https://math.sustech.edu.cn/c/kashubairyna?lang=en" download class="download-link">School's homepage</a>
+                                    <div class="course-title">Applied Abstract Algebra</div>
+
+                                    <div class="instructor">Prof. KASHUBA Iryna &nbsp;
+                                        <a>
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="https://mathscinet.ams.org/mathscinet/author?authorId=650452">
+                                        MathSciNet</a> &nbsp;
+                                        <a href="https://math.sustech.edu.cn/c/kashubairyna?lang=en">
+                                        Faculty Page</a>
                                     </div>
-                                    <div class="course-time">Spring, 2025</div>
+
+                                    <div class="course-time">MA235, Spring, 2025</div>
                                 </div>
+
                                 <div class="course-body">
-                                    <p class="course-description">
-                                        Basic notions of category theory. Some important results of modules. (Chapters 1 and 3 of the textbook.)
-                                    </p>
+                                    <div class="course-description">
+                                        Chapter 1, section 2.5, and chapter 3 (besides sections 3.6, 3.14, and 3.15) of the textbook are covered.<br>
+                                        Part of the category theory covers category, object and morphism, functor, natural transformation, Yoneda's lemma and adjoint.<br>
+                                        Part of the module theory covers Artinian and Noetherian modules, decomposability and reducibility, algebra and coalgebra, projective and injective modules, and Morita context. The direct/inverse system/limit in modules with section 2.5 is supplemented.
+                                    </div>
+
                                     <div class="course-details">
                                         <div class="detail-item">
-                                            <span class="detail-label">Grade:</span>
-                                            <span>TBC</span>
+                                            <span class="detail-label">Grade</span>
+                                            <span>TBA</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Textbook:</span>
+                                            <span class="detail-label">Textbook</span>
                                             <span class="textbook">Basic Algebra II by Nathan Jacobson</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Language:</span>
-                                            <span class="textbook">English</span>
+                                            <span class="detail-label">Language</span>
+                                            <span>English</span>
                                         </div>
+                                        
                                         <div class="detail-item">
-                                            <span class="detail-label">Type:</span>
+                                            <span class="detail-label">Type</span>
                                             <span>Elective</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Credit:</span>
+                                            <span class="detail-label">Credit</span>
                                             <span>3</span>
-                                        </div>               
+                                        </div>                              
                                     </div>
                                 </div>
                             </article>
 
                             <article class="course-card">
                                 <div class="course-header">
-                                    <h3 class="course-title">Elementary Number Theory (MA209-16)</h3>
-                                    <div class="instructor">Prof. XIANG Qing
-                                    <a href="https://math.sustech.edu.cn/c/xiangqing?lang=en" download class="download-link">School's homepage</a>
+                                    <div class="course-title">Elementary Number Theory</div>
+
+                                    <div class="instructor">Prof. XIANG Qing &nbsp;
+                                        <a>
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="https://mathscinet.ams.org/mathscinet/author?authorId=305619">
+                                        MathSciNet</a> &nbsp;
+                                        <a href="https://math.sustech.edu.cn/c/xiangqing?lang=en">
+                                        Faculty Page</a>
                                     </div>
-                                    <div class="course-time">Spring, 2024</div>
+
+                                    <div class="course-time">MA209-16, Fall, 2024</div>
                                 </div>
+
                                 <div class="course-body">
-                                    <p class="course-description">
+                                    <div class="course-description">
                                         This course is about elementary number theory and a little algebraic number theory. However, the midterm and final exams are extremely difficult for students who have never participated in a mathematical Olympiad! Thus, I got an awful grade in this course.
-                                    </p>
+                                    </div>
+
                                     <div class="course-details">
                                         <div class="detail-item">
-                                            <span class="detail-label">Grade:</span>
+                                            <span class="detail-label">Grade</span>
                                             <span>C+ (77)</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Language:</span>
+                                            <span class="detail-label">Textbook</span>
+                                            <span class="textbook">An Introduction to the Theory of Numbers by Ivan Niven, Herbert S. Zuckerman, Hugh L. Montgomery</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Language</span>
                                             <span>English</span>
                                         </div>
+                                        
                                         <div class="detail-item">
-                                            <span class="detail-label">Textbook:</span>
-                                            <span class="textbook">An Introduction to the Theory of Numbers by Ivan Niven, Herbert S. Zuckerman, and Hugh L. Montgomery </span>
-                                        </div>
-                                        <div class="detail-item">
-                                            <span class="detail-label">Type:</span>
+                                            <span class="detail-label">Type</span>
                                             <span>Elective</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Credit:</span>
+                                            <span class="detail-label">Credit</span>
                                             <span>3</span>
-                                        </div>
+                                        </div>                              
                                     </div>
                                 </div>
                             </article>
+
+                            <p class="empty-notice">More courses will be added soon.</p>
                         </div>
                     </section>
                 </div>
@@ -685,243 +695,393 @@
                         <div class="course-list">
                             <article class="course-card">
                                 <div class="course-header">
-                                    <h3 class="course-title">Mathematical Analysis I, II, III (MA101a, MA102a, MA203a)</h3>
-                                    <div class="instructor">Prof. MA Fuming (Retired), Prof. Yunhao Fu
-                                    <a href="https://math.sustech.edu.cn/c/fuyunhao?lang=en" download class="download-link">School's homepage</a>
+                                    <div class="course-title">Mathematical Analysis I, II, III</div>
+
+                                    <div class="instructor">Prof. MA Fuming &nbsp;
+                                        <a>
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="https://mathscinet.ams.org/mathscinet/author?authorId=230795">
+                                        MathSciNet</a> &nbsp;
+                                        <a>
+                                        Faculty Page (Retired)</a>
+
+                                        , Prof. FU Yunhao &nbsp;
+                                        <a>
+                                        Personal Homepage</a> &nbsp;
+                                        <a>
+                                        MathSciNet</a> &nbsp;
+                                        <a href="https://math.sustech.edu.cn/c/fuyunhao?lang=en">
+                                        Faculty Page</a>
                                     </div>
-                                    <div class="course-time">Fall, 2023; Spring, 2024; Fall, 2024</div>
+
+                                    <div class="course-time">MA101a, Fall, 2023; MA102a, Spring, 2024; MA203a, Fall, 2024</div>
                                 </div>
+
                                 <div class="course-body">
-                                    <p class="course-description">
+                                    <div class="course-description">
                                         Introduction to basic mathematical analysis.
-                                        <ul>
-                                            <li>Limits and series of sequences and functions.</li>
-                                            <li>Continuity, differentiability, series of functions.</li>
-                                            <li>Integration, Lebesgue measure, and theorem, integration applications.</li>
-                                            <li>Incomplete integral, including integral with parameters。</li>
+                                        <ul style="margin-left: 2em;">
+                                            <li>Limits and series of sequences.</li>
+                                            <li>Limit, continuity, differentiability, series of functions.</li>
+                                            <li>Integration and its applications, Lebesgue measure and theorem.</li>
+                                            <li>Incomplete integral, including integral with parameters.</li>
                                             <li>Point set topology of Euclidean space.</li>
-                                            <li> Multivariable functions and their continuity, differentiability, and integration.</li>
-                                            <li>Integration along curves and surfaces. Gauss' formula and Stokes' formula.</li>
-                                            <li>Mathematics of the field in Physics.</li>
+                                            <li>Multivariable functions and their continuity, differentiability, and integration.</li>
+                                            <li>Integration along curves and surfaces. Gauss' formula and Stokes' formula. Mathematics of the field in Physics.</li>
                                         </ul>
+                                        
                                         Additional topics on elementary Fourier analysis.
-                                    </p>
+                                    </div>
+
                                     <div class="course-details">
                                         <div class="detail-item">
-                                            <span class="detail-label">Grade:</span>
-                                            <span>A-(91), A+(97), A(94)</span>
+                                            <span class="detail-label">Grade</span>
+                                            <span>A- (91), A+ (97), A (94)</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Language:</span>
-                                            <span class="textbook">Chinese</span>
+                                            <span class="detail-label">Textbook</span>
+                                            <span class="textbook">《数学分析教程》上下册 常庚哲，史济怀 (A Course in Mathematical Analysis I, II by CHANG Gengzhe, SHI Jihuai)</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Textbook:</span>
-                                            <span class="textbook">《数学分析教程》（上下册）常庚哲，史济怀 (A Course in Mathematical Analysis I, II by CHANG Gengzhe and SHI Jihuai)</span>
+                                            <span class="detail-label">Language</span>
+                                            <span>Chinese</span>
                                         </div>
+                                        
                                         <div class="detail-item">
-                                            <span class="detail-label">Type:</span>
+                                            <span class="detail-label">Type</span>
                                             <span>Required</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Credit:</span>
+                                            <span class="detail-label">Credit</span>
                                             <span>5, 5, 5</span>
-                                        </div> 
+                                        </div>                              
                                     </div>
                                 </div>
                             </article>
-                            
+
                             <article class="course-card">
                                 <div class="course-header">
-                                    <h3 class="course-title">Complex Analysis (MA202)</h3>
-                                    <div class="instructor">Prof. Man Shun Ma
-                                    <a href="https://math.sustech.edu.cn/c/manshunma?lang=en" download class="download-link">School's homepage</a>
+                                    <div class="course-title">Complex Analysis</div>
+
+                                    <div class="instructor">Prof. MA (John) Man Shun &nbsp;
+                                        <a>
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="https://mathscinet.ams.org/mathscinet/author?authorId=1290146">
+                                        MathSciNet</a> &nbsp;
+                                        <a href="https://math.sustech.edu.cn/c/manshunma?lang=en">
+                                        Faculty Page</a>
                                     </div>
-                                    <div class="course-time">Spring, 2025</div>
+
+                                    <div class="course-time">MA202, Spring, 2025</div>
                                 </div>
+
                                 <div class="course-body">
-                                    <p class="course-description">
+                                    <div class="course-description">
                                         Theory of functions of a complex variable, including:
-                                        <ul>
-                                            <li>Analytic functions and Cauchy-Riemann equations</li>
-                                            <li>Complex integration and Cauchy's theorem</li>
-                                            <li>Residue theory and applications</li>
-                                            <li>Conformal mappings</li>
-                                        </ul>
-                                    </p>
+                                        <ul style="margin-left: 2em;">
+                                            <li>Complex number and complex plane.</li>
+                                            <li>Holomorphicity and Cauchy-Riemann equations.</li>
+                                            <li>Integration, Cauchy's integral formula(s), and their applications.</li>
+                                            <li>Singularities and residue formula.</li>
+                                            <li>Conformal mapping and Riemann's mapping theorem.</li>
+                                        </ul>                                
+                                    </div>
+
                                     <div class="course-details">
                                         <div class="detail-item">
-                                            <span class="detail-label">Grade:</span>
-                                            <span>TBC</span>
+                                            <span class="detail-label">Grade</span>
+                                            <span>TBA</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Language:</span>
-                                            <span class="textbook">English, Chinese(only for talking language)</span>
+                                            <span class="detail-label">Textbook</span>
+                                            <span class="textbook">Princeton Lectures in Analysis II Complex Analysis by Elias M. Stein, Rami Shakarchi</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Textbook:</span>
-                                            <span class="textbook">Princeton Lectures in Analysis II Complex Analysis by Elias M. Stein and Rami Shakarchi</span>
+                                            <span class="detail-label">Language</span>
+                                            <span>English, Chinese</span>
                                         </div>
+                                        
                                         <div class="detail-item">
-                                            <span class="detail-label">Type:</span>
+                                            <span class="detail-label">Type</span>
                                             <span>Required</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Credit:</span>
+                                            <span class="detail-label">Credit</span>
                                             <span>3</span>
-                                        </div>
+                                        </div>                              
                                     </div>
                                 </div>
                             </article>
 
                             <article class="course-card">
                                 <div class="course-header">
-                                    <h3 class="course-title">Real Analysis (MA?) (TBC)</h3>
-                                    <div class="instructor">Prof. ?
-                                    <a href="" download class="download-link">School's homepage</a>
+                                    <div class="course-title">Real Analysis</div>
+
+                                    <div class="instructor">TBA &nbsp;
+                                        <a>
+                                        Personal Homepage</a> &nbsp;
+                                        <a>
+                                        MathSciNet</a> &nbsp;
+                                        <a>
+                                        Faculty Page</a>
                                     </div>
-                                    <div class="course-time">Fall, 2025</div>
+
+                                    <div class="course-time">MA301, Fall, 2025</div>
                                 </div>
+
                                 <div class="course-body">
-                                    <p class="course-description">
-                                        TBC
-                                    </p>
+                                    <div class="course-description">
+                                        TBA                            
+                                    </div>
+
                                     <div class="course-details">
                                         <div class="detail-item">
-                                            <span class="detail-label">Grade:</span>
-                                            <span>TBC</span>
+                                            <span class="detail-label">Grade</span>
+                                            <span>TBA</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Language:</span>
-                                            <span class="textbook">TBC</span>
+                                            <span class="detail-label">Textbook</span>
+                                            <span class="textbook">TBA</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Textbook:</span>
-                                            <span class="textbook">Princeton Lectures in Analysis III Real Analysis by Elias M. Stein and Rami Shakarchi</span>
+                                            <span class="detail-label">Language</span>
+                                            <span>TBA</span>
                                         </div>
+                                        
                                         <div class="detail-item">
-                                            <span class="detail-label">Type:</span>
+                                            <span class="detail-label">Type</span>
                                             <span>Required</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Credit:</span>
+                                            <span class="detail-label">Credit</span>
                                             <span>3</span>
-                                        </div>
+                                        </div>                              
                                     </div>
                                 </div>
                             </article>
 
                             <article class="course-card">
                                 <div class="course-header">
-                                    <h3 class="course-title">Ordinary Differential Equations A (MA201a)</h3>
-                                    <div class="instructor">Prof. Alexander Kurganov
-                                    <a href="https://math.sustech.edu.cn/c/kurganovalexander?lang=en" download class="download-link">School's homepage</a>
+                                    <div class="course-title">Functional Analysis</div>
+
+                                    <div class="instructor">TBA &nbsp;
+                                        <a>
+                                        Personal Homepage</a> &nbsp;
+                                        <a>
+                                        MathSciNet</a> &nbsp;
+                                        <a>
+                                        Faculty Page</a>
                                     </div>
-                                    <div class="course-time">Spring, 2025</div>
+
+                                    <div class="course-time">MA302, Spring, 2026</div>
                                 </div>
+
                                 <div class="course-body">
-                                    <p class="course-description">
-                                        Covering chapters 1-7, 9-11 of the textbook.
-                                    </p>
+                                    <div class="course-description">
+                                        TBA                            
+                                    </div>
+
                                     <div class="course-details">
                                         <div class="detail-item">
-                                            <span class="detail-label">Grade:</span>
-                                            <span>TBC</span>
+                                            <span class="detail-label">Grade</span>
+                                            <span>TBA</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Language:</span>
-                                            <span class="textbook">English</span>
+                                            <span class="detail-label">Textbook</span>
+                                            <span class="textbook">TBA</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Textbook:</span>
-                                            <span class="textbook">Elementary Differential Equations and Boundary Value Problems by William E. Boyce, Richard C. Diprima, and Douglas B. Mead</span>
+                                            <span class="detail-label">Language</span>
+                                            <span>TBA</span>
                                         </div>
+                                        
                                         <div class="detail-item">
-                                            <span class="detail-label">Type:</span>
+                                            <span class="detail-label">Type</span>
+                                            <span>Elective</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Credit</span>
+                                            <span>3</span>
+                                        </div>                              
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="course-card">
+                                <div class="course-header">
+                                    <div class="course-title">Ordinary Differential Equations A</div>
+
+                                    <div class="instructor">Prof. KURGANOV Alexander &nbsp;
+                                        <a>
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="https://mathscinet.ams.org/mathscinet/author?authorId=620780">
+                                        MathSciNet</a> &nbsp;
+                                        <a href="https://math.sustech.edu.cn/c/kurganovalexander?lang=en">
+                                        Faculty Page</a>
+                                    </div>
+
+                                    <div class="course-time">MA201a, Spring, 2025</div>
+                                </div>
+
+                                <div class="course-body">
+                                    <div class="course-description">
+                                        Theory of solving ODEs：
+                                        <ul style="margin-left: 2em;">
+                                            <li>Linear ODEs and systems.</li>
+                                            <li>Solve by power series.</li>
+                                            <li>Laplace transform.</li>
+                                            <li>Nonlinear ODEs.</li>
+                                            <li>Sturm-Liouville boundary value problems.</li>
+                                            <li>Numerical methods.</li>
+                                            <li>Separation of variables to solve some particular PDEs.</li>
+                                        </ul>                                
+                                    </div>
+
+                                    <div class="course-details">
+                                        <div class="detail-item">
+                                            <span class="detail-label">Grade</span>
+                                            <span>TBA</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Textbook</span>
+                                            <span class="textbook">Elementary Differential Equations and Boundary Value Problems by William E. Boyce, Richard C. Diprima, Douglas B. Mead</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Language</span>
+                                            <span>English</span>
+                                        </div>
+                                        
+                                        <div class="detail-item">
+                                            <span class="detail-label">Type</span>
                                             <span>Required</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Credit:</span>
+                                            <span class="detail-label">Credit</span>
                                             <span>4</span>
-                                        </div>
+                                        </div>                              
                                     </div>
                                 </div>
                             </article>
 
                             <article class="course-card">
                                 <div class="course-header">
-                                    <h3 class="course-title">Partial Differential Equations (MA?)</h3>
-                                    <div class="instructor">Prof. ?
-                                    <a href="" download class="download-link">School's homepage</a>
+                                    <div class="course-title">Partial Differential Equations</div>
+
+                                    <div class="instructor">TBA &nbsp;
+                                        <a>
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="">
+                                        MathSciNet</a> &nbsp;
+                                        <a href="">
+                                        Faculty Page</a>
                                     </div>
-                                    <div class="course-time">Fall, 2025</div>
+
+                                    <div class="course-time">MA303, Fall, 2025</div>
                                 </div>
+
                                 <div class="course-body">
-                                    <p class="course-description">
-                                        TBC
-                                    </p>
+                                    <div class="course-description">
+                                        Theory of solving PDEs：
+                                        <ul style="margin-left: 2em;">
+                                            <li>TBA</li>
+                                        </ul>                                
+                                    </div>
+
                                     <div class="course-details">
                                         <div class="detail-item">
-                                            <span class="detail-label">Grade:</span>
-                                            <span>TBC</span>
+                                            <span class="detail-label">Grade</span>
+                                            <span>TBA</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Language:</span>
-                                            <span class="textbook">English</span>
+                                            <span class="detail-label">Textbook</span>
+                                            <span class="textbook">TBA</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Textbook:</span>
-                                            <span class="textbook">TBC</span>
+                                            <span class="detail-label">Language</span>
+                                            <span>TBA</span>
                                         </div>
+                                        
                                         <div class="detail-item">
-                                            <span class="detail-label">Type:</span>
+                                            <span class="detail-label">Type</span>
                                             <span>Required</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Credit:</span>
-                                            <span>TBC</span>
-                                        </div>
+                                            <span class="detail-label">Credit</span>
+                                            <span>3</span>
+                                        </div>                              
                                     </div>
                                 </div>
                             </article>
 
                             <article class="course-card">
                                 <div class="course-header">
-                                    <h3 class="course-title">Probability Theory (MA215)</h3>
-                                    <div class="instructor">Prof. HONG Jieliang
-                                    <a href="https://math.sustech.edu.cn/c/hongjieliang?lang=en" download class="download-link">School's homepage</a>
+                                    <div class="course-title">Probability Theory</div>
+
+                                    <div class="instructor">Prof. HONG Jieliang &nbsp;
+                                        <a>
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="https://mathscinet.ams.org/mathscinet/author?authorId=1299994">
+                                        MathSciNet</a> &nbsp;
+                                        <a href="https://math.sustech.edu.cn/c/hongjieliang?lang=en">
+                                        Faculty Page</a>
                                     </div>
-                                    <div class="course-time">Fall, 2024</div>
+
+                                    <div class="course-time">MA215, Fall, 2024</div>
                                 </div>
+
                                 <div class="course-body">
-                                    <p class="course-description">
+                                    <div class="course-description">
                                         Basic probability theory. Four convergences in probability theory.
-                                    </p>
+                                    </div>
+
                                     <div class="course-details">
                                         <div class="detail-item">
-                                            <span class="detail-label">Grade:</span>
-                                            <span>A-(90)</span>
+                                            <span class="detail-label">Grade</span>
+                                            <span>A- (90)</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Language:</span>
-                                            <span class="textbook">English, Chinese(only for talking)</span>
-                                        </div>
-                                        <div class="detail-item">
-                                            <span class="detail-label">Textbook:</span>
+                                            <span class="detail-label">Textbook</span>
                                             <span class="textbook">A First Course in Probability by Sheldon Ross</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Type:</span>
+                                            <span class="detail-label">Language</span>
+                                            <span>English, Chinese</span>
+                                        </div>
+                                        
+                                        <div class="detail-item">
+                                            <span class="detail-label">Type</span>
                                             <span>Required</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Credit:</span>
+                                            <span class="detail-label">Credit</span>
                                             <span>4</span>
-                                        </div>
+                                        </div>                              
                                     </div>
                                 </div>
                             </article>
-                            
+
+                            <p class="empty-notice">More courses will be added soon.</p>
                         </div>
                     </section>
                 </div>
@@ -931,68 +1091,161 @@
                         <div class="course-list">
                             <article class="course-card">
                                 <div class="course-header">
-                                    <h3 class="course-title">Topology</h3>
-                                    <div class="instructor">Prof. ZHU Yifei
-                                    <a href="https://yifeizhu.github.io/">Personal homepage</a>
-                                    <a href="https://math.sustech.edu.cn/c/zhuyifei?lang=en">School's homepage</a>
+                                    <div class="course-title">Topology</div>
+
+                                    <div class="instructor">Prof. ZHU Yifei &nbsp;
+                                        <a href="https://yifeizhu.github.io/">
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="https://mathscinet.ams.org/mathscinet/author?authorId=1050537">
+                                        MathSciNet</a> &nbsp;
+                                        <a href="https://math.sustech.edu.cn/c/zhuyifei?lang=en">
+                                        Faculty Page</a>
                                     </div>
-                                    <div class="course-time">Spring, 2025</div>
+
+                                    <div class="course-time">MA323, Spring, 2025</div>
                                 </div>
+
                                 <div class="course-body">
-                                    <p class="course-description">
-                                        Introduction to general topology and basic algebraic topology.
-                                    </p>
+                                    <div class="course-description">
+                                        Introduction to general topology and basic algebraic topology (homotopy, fundamental group).
+                                    </div>
+
                                     <div class="course-details">
                                         <div class="detail-item">
-                                            <span class="detail-label">Grade:</span>
-                                            <span>TBC</span>
+                                            <span class="detail-label">Grade</span>
+                                            <span>TBA</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Credit:</span>
-                                            <span>3</span>
+                                            <span class="detail-label">Textbook</span>
+                                            <span class="textbook">《基础拓扑讲义》 尤承业 (Lectures on Basic Topology by YOU Chengye)</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Type:</span>
+                                            <span class="detail-label">Language</span>
+                                            <span>English, Chinese</span>
+                                        </div>
+                                        
+                                        <div class="detail-item">
+                                            <span class="detail-label">Type</span>
                                             <span>Elective</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Textbook:</span>
-                                            <span class="textbook">《基础拓扑讲义》</span>
-                                        </div>
+                                            <span class="detail-label">Credit</span>
+                                            <span>3</span>
+                                        </div>                              
                                     </div>
                                 </div>
                             </article>
-                            
+
+                            <p class="empty-notice">More courses will be added soon.</p>
+                        </div>
+                    </section>
+                </div>
+
+                <div id="oth-content" class="sub-content">
+                    <section class="courses-section">
+                        <div class="course-list">
                             <article class="course-card">
                                 <div class="course-header">
-                                    <h3 class="course-title">Association Scheme (代数与数论专题)</h3>
-                                    <div class="instructor">Prof. XIANG Ziqing</div>
-                                    <div class="course-time">Spring, 2025</div>
+                                    <div class="course-title">Discrete Mathematics</div>
+
+                                    <div class="instructor">Prof. TANG Ming &nbsp;
+                                        <a href="https://mingtang.website/">
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="https://cse.sustech.edu.cn/en/people/tenure/type/associate_professor">
+                                        Faculty Page</a>
+                                    </div>
+
+                                    <div class="course-time">CS201, Spring, 2025</div>
                                 </div>
+
                                 <div class="course-body">
-                                    <p class="course-description">
-                                        Spectral graph theory, association scheme, characteristic table.
-                                    </p>
+                                    <div class="course-description">
+                                        Introduction to discrete mathematics for computer science. It covers: logic and mathematicial proof, set and function, complexity of algorithms, number theory and cryptography, mathematical induction, recursion, counting, relation, and graph and tree.
+                                    </div>
+
                                     <div class="course-details">
                                         <div class="detail-item">
-                                            <span class="detail-label">Grade:</span>
-                                            <span>Audit</span>
+                                            <span class="detail-label">Grade</span>
+                                            <span>TBA</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Credit:</span>
+                                            <span class="detail-label">Textbook</span>
+                                            <span class="textbook">Discrete Mathematics and Its Applications by Kenneth H. Rosen</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Language</span>
+                                            <span>English</span>
+                                        </div>
+                                        
+                                        <div class="detail-item">
+                                            <span class="detail-label">Type</span>
+                                            <span>Elective</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Credit</span>
                                             <span>3</span>
-                                        </div>
-                                        <div class="detail-item">
-                                            <span class="detail-label">Type:</span>
-                                            <span>Graduate, Elective</span>
-                                        </div>
-                                        <div class="detail-item">
-                                            <span class="detail-label">Textbook:</span>
-                                            <span class="textbook">Instructor-prepared Materials</span>
-                                        </div>
+                                        </div>                              
                                     </div>
                                 </div>
                             </article>
+
+                            <article class="course-card">
+                                <div class="course-header">
+                                    <div class="course-title">Association Scheme</div>
+
+                                    <div class="instructor">Prof. XIANG Ziqing &nbsp;
+                                        <a href="https://ziqing.org/">
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="https://mathscinet.ams.org/mathscinet/author?authorId=982072">
+                                        MathSciNet</a> &nbsp;
+                                        <a href="https://math.sustech.edu.cn/c/xiangziqing?lang=en">
+                                        Faculty Page</a>
+                                    </div>
+
+                                    <div class="course-time">MAT7059, Spring, 2025</div>
+                                </div>
+
+                                <div class="course-body">
+                                    <div class="course-description">
+                                        MAT7059 (Topics in Algebra and Number Theory) is a course whose contents vary yearly. In this semester, the instructor introduced the association scheme.
+                                    </div>
+
+                                    <div class="course-details">
+                                        <div class="detail-item">
+                                            <span class="detail-label">Grade</span>
+                                            <span>Audit</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Textbook</span>
+                                            <span class="textbook">Instructor-prepared Materials</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Language</span>
+                                            <span>English</span>
+                                        </div>
+                                        
+                                        <div class="detail-item">
+                                            <span class="detail-label">Type</span>
+                                            <span>Elective</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Credit</span>
+                                            <span>3</span>
+                                        </div>                              
+                                    </div>
+                                </div>
+                            </article>
+
+                            <p class="empty-notice">More courses will be added soon.</p>
                         </div>
                     </section>
                 </div>
@@ -1002,96 +1255,207 @@
                         <div class="course-list">
                             <article class="course-card">
                                 <div class="course-header">
-                                    <h3 class="course-title">General Physics I, II</h3>
-                                    <div class="instructor">Prof. CHEN Weiqiang, Prof. WU Zihui</div>
-                                    <div class="course-time">Fall, 2023; Spring, 2024</div>
+                                    <div class="course-title">General Physics I, II</div>
+
+                                    <div class="instructor">
+                                        Prof. CHEN Weiqiang &nbsp;
+                                        <a>
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="https://phy.sustech.edu.cn/faculty/detail/id/181.html?lang=en-us">
+                                        Faculty Page</a>
+
+                                        , Prof. Jack Ng (WU Zihui) &nbsp;
+                                        <a>
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="https://phy.sustech.edu.cn/faculty/detail/id/214.html?lang=zh-cn">
+                                        Faculty Page (in Chinese)</a>
+                                    </div>
+
+                                    <div class="course-time">PHY101, Fall, 2023; PHY102, Spring, 2024</div>
                                 </div>
+
                                 <div class="course-body">
-                                    <p class="course-description">
-                                        Introduction to general physics.
-                                    </p>
+                                    <div class="course-description">
+                                        Introduction to general physics. It particularly introduces the magnetic field by applying the special theory of relativity to the electric field.
+                                    </div>
+
                                     <div class="course-details">
                                         <div class="detail-item">
-                                            <span class="detail-label">Grade:</span>
+                                            <span class="detail-label">Grade</span>
                                             <span>B+ (89), B+ (88)</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Credit:</span>
-                                            <span>5, 5</span>
+                                            <span class="detail-label">Textbook</span>
+                                            <span class="textbook">Berkerly Physics Course, Vol. 1, 2, 3 by Charles Kittel, Edward M. Purcell, Frank S. Crawford Jr., et al.</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Type:</span>
+                                            <span class="detail-label">Language</span>
+                                            <span>English, Chinese</span>
+                                        </div>
+                                        
+                                        <div class="detail-item">
+                                            <span class="detail-label">Type</span>
                                             <span>Required</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Textbook:</span>
-                                            <span class="textbook">Berkerly Physics Course</span>
-                                        </div>
+                                            <span class="detail-label">Credit</span>
+                                            <span>5, 5</span>
+                                        </div>                              
                                     </div>
                                 </div>
                             </article>
 
                             <article class="course-card">
                                 <div class="course-header">
-                                    <h3 class="course-title">热力学与统计物理I</h3>
-                                    <div class="instructor">Prof. WANG Kedong</div>
-                                    <div class="course-time">Spring, 2024</div>
+                                    <div class="course-title">Thermodynamics and Statistical Physics I</div>
+
+                                    <div class="instructor">
+                                        Prof. WANG Kedong &nbsp;
+                                        <a>
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="https://phy.sustech.edu.cn/faculty/detail/id/2058.html?lang=en-us">
+                                        Faculty Page</a>
+                                    </div>
+
+                                    <div class="course-time">PHY204, Spring, 2024</div>
                                 </div>
+
                                 <div class="course-body">
-                                    <p class="course-description">
-                                        Introduction to general physics.
-                                    </p>
+                                    <div class="course-description">
+                                        Introduction to thermodynamics and brief statistical physics.
+                                    </div>
+
                                     <div class="course-details">
                                         <div class="detail-item">
-                                            <span class="detail-label">Grade:</span>
+                                            <span class="detail-label">Grade</span>
                                             <span>Audit</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Credit:</span>
+                                            <span class="detail-label">Textbook</span>
+                                            <span class="textbook">《热力学与统计物理学》 林宗涵 (Thermodynamics and Statistical Physics by LIN Zonghan)</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Language</span>
+                                            <span>Chinese, English</span>
+                                        </div>
+                                        
+                                        <div class="detail-item">
+                                            <span class="detail-label">Type</span>
+                                            <span>Required (for physics students)</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Credit</span>
                                             <span>3</span>
-                                        </div>
-                                        <div class="detail-item">
-                                            <span class="detail-label">Type:</span>
-                                            <span>Required</span>
-                                        </div>
-                                        <div class="detail-item">
-                                            <span class="detail-label">Textbook:</span>
-                                            <span class="textbook">《热力学与统计物理》</span>
-                                        </div>
+                                        </div>                              
                                     </div>
                                 </div>
                             </article>
 
                             <article class="course-card">
                                 <div class="course-header">
-                                    <h3 class="course-title">General Chemistry</h3>
-                                    <div class="instructor">Prof. XU Zongxiang</div>
-                                    <div class="course-time">Fall, 2024</div>
+                                    <div class="course-title">Electrodynamics I</div>
+
+                                    <div class="instructor">
+                                        Prof. HUANG Mingyuan &nbsp;
+                                        <a>
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="https://phy.sustech.edu.cn/faculty/detail/id/2058.html?lang=en-us">
+                                        Faculty Page</a>
+                                    </div>
+
+                                    <div class="course-time">PHY207-15, Fall, 2024</div>
                                 </div>
+
                                 <div class="course-body">
-                                    <p class="course-description">
-                                        Chemistry in English.
-                                    </p>
+                                    <div class="course-description">
+                                        Introduction to basic theories of electrodynamics.
+                                    </div>
+
                                     <div class="course-details">
                                         <div class="detail-item">
-                                            <span class="detail-label">Grade:</span>
-                                            <span>A (9?)</span>
+                                            <span class="detail-label">Grade</span>
+                                            <span>Audit</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Credit:</span>
-                                            <span>4</span>
+                                            <span class="detail-label">Textbook</span>
+                                            <span class="textbook">Introduction to electrodynamics by David J. Griffiths</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Type:</span>
-                                            <span>Required</span>
+                                            <span class="detail-label">Language</span>
+                                            <span>English, Chinese</span>
                                         </div>
+                                        
                                         <div class="detail-item">
-                                            <span class="detail-label">Textbook:</span>
-                                            <span class="textbook">TBC</span>
+                                            <span class="detail-label">Type</span>
+                                            <span>Required (for physics students)</span>
                                         </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Credit</span>
+                                            <span>3</span>
+                                        </div>                              
                                     </div>
                                 </div>
                             </article>
+
+                            <article class="course-card">
+                                <div class="course-header">
+                                    <div class="course-title">General Chemistry</div>
+
+                                    <div class="instructor">
+                                        Prof. XU Zongxiang &nbsp;
+                                        <a>
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="https://chem.sustech.edu.cn/?l=zh-cn#/common/teachersDetail?current_id=57&id=69">
+                                        Faculty Page</a>
+                                    </div>
+
+                                    <div class="course-time">CH103, Fall, 2024</div>
+                                </div>
+
+                                <div class="course-body">
+                                    <div class="course-description">
+                                        Introduction to general chemistry.
+                                    </div>
+
+                                    <div class="course-details">
+                                        <div class="detail-item">
+                                            <span class="detail-label">Grade</span>
+                                            <span>A (95)</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Textbook</span>
+                                            <span class="textbook">Chemistry: The Central Science by Theodore E. Brown, H Eugene LeMay, Bruce E. Bursten, et al.</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Language</span>
+                                            <span>English, Chinese</span>
+                                        </div>
+                                        
+                                        <div class="detail-item">
+                                            <span class="detail-label">Type</span>
+                                            <span>Required</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Credit</span>
+                                            <span>4</span>
+                                        </div>                              
+                                    </div>
+                                </div>
+                            </article>
+
+                            <p class="empty-notice">More courses will be added soon.</p>
                         </div>
                     </section>
                 </div>
@@ -1101,96 +1465,207 @@
                         <div class="course-list">
                             <article class="course-card">
                                 <div class="course-header">
-                                    <h3 class="course-title">Elementary French</h3>
-                                    <div class="instructor">Prof. Miguel</div>
-                                    <div class="course-time">Spring, 2025</div>
+                                    <div class="course-title">Writing and Communication Skills</div>
+
+                                    <div class="instructor">
+                                        Dr. ZHOU Xiumei &nbsp;
+                                        <a>
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="https://rw.sustech.edu.cn/a/cn/shiziduiwu/jiaoshixulie/2019/1106/349.html">
+                                        Faculty Page</a>
+                                    </div>
+
+                                    <div class="course-time">HUM032, Fall, 2023</div>
                                 </div>
+
                                 <div class="course-body">
-                                    <p class="course-description">
-                                        Bonjour! Je m'appelle Kevin. Je suis un étudiant en Chine.
-                                    </p>
+                                    <div class="course-description">
+                                        Some skills for writing essays in Chinese.
+                                    </div>
+
                                     <div class="course-details">
                                         <div class="detail-item">
-                                            <span class="detail-label">Grade:</span>
+                                            <span class="detail-label">Grade</span>
                                             <span>P</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Credit:</span>
-                                            <span>2</span>
+                                            <span class="detail-label">Textbook</span>
+                                            <span class="textbook">Instructor-prepared Materials</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Type:</span>
+                                            <span class="detail-label">Language</span>
+                                            <span>Chinese</span>
+                                        </div>
+                                        
+                                        <div class="detail-item">
+                                            <span class="detail-label">Type</span>
+                                            <span>Required</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Credit</span>
+                                            <span>2</span>
+                                        </div>                              
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="course-card">
+                                <div class="course-header">
+                                    <div class="course-title">SUSTech English I, II, III</div>
+
+                                    <div class="instructor">
+                                        Ms. LIU Yueyue &nbsp;
+                                        <a>
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="https://cle.sustech.edu.cn/faculty/detail/id/361.html?lang=en-us">
+                                        Faculty Page</a>
+
+                                        , Dr. LUO Jinru &nbsp;
+                                        <a>
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="https://cle.sustech.edu.cn/faculty/detail/id/591.html?lang=en-us">
+                                        Faculty Page</a>
+                                    </div>
+
+                                    <div class="course-time">CLE021, Fall, 2023; CLE022, Fall, 2023; CLE023, Spring, 2024</div>
+                                </div>
+
+                                <div class="course-body">
+                                    <div class="course-description">
+                                        I qualified for an exemption from SE1 by passing the placement English test. SE2 is a typical fun english course. SE3 is more academic.
+                                    </div>
+
+                                    <div class="course-details">
+                                        <div class="detail-item">
+                                            <span class="detail-label">Grade</span>
+                                            <span>Ex, A (93), A (94)</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Textbook</span>
+                                            <span class="textbook">Instructor-prepared Materials</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Language</span>
+                                            <span>English</span>
+                                        </div>
+                                        
+                                        <div class="detail-item">
+                                            <span class="detail-label">Type</span>
+                                            <span>Required</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Credit</span>
+                                            <span>4, 4, 4</span>
+                                        </div>                              
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="course-card">
+                                <div class="course-header">
+                                    <div class="course-title">English for Academic Purpose</div>
+
+                                    <div class="instructor">
+                                        Dr. LI Zhuo &nbsp;
+                                        <a>
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="https://cle.sustech.edu.cn/faculty/detail/id/362.html?lang=en-us">
+                                        Faculty Page</a>
+                                    </div>
+
+                                    <div class="course-time">CLE030, Fall, 2024</div>
+                                </div>
+
+                                <div class="course-body">
+                                    <div class="course-description">
+                                        Some skills for writing essays in English.
+                                    </div>
+
+                                    <div class="course-details">
+                                        <div class="detail-item">
+                                            <span class="detail-label">Grade</span>
+                                            <span>A (95)</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Textbook</span>
+                                            <span class="textbook">Instructor-prepared Materials</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Language</span>
+                                            <span>English</span>
+                                        </div>
+                                        
+                                        <div class="detail-item">
+                                            <span class="detail-label">Type</span>
+                                            <span>Required</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Credit</span>
+                                            <span>2</span>
+                                        </div>                              
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="course-card">
+                                <div class="course-header">
+                                    <div class="course-title">Elementary French</div>
+
+                                    <div class="instructor">
+                                        Dr. Miguel Angel Marquez Martinez &nbsp;
+                                        <a>
+                                        Personal Homepage</a> &nbsp;
+                                        <a href="https://cle.sustech.edu.cn/faculty/detail/id/592.html?lang=en-us">
+                                        Faculty Page</a>
+                                    </div>
+
+                                    <div class="course-time">CLE051, Spring, 2025</div>
+                                </div>
+
+                                <div class="course-body">
+                                    <div class="course-description">
+                                        Bonjour! Je suis un étudiant en Chine. Je étudie un peu de français ce semestre.
+                                    </div>
+
+                                    <div class="course-details">
+                                        <div class="detail-item">
+                                            <span class="detail-label">Grade</span>
+                                            <span>P</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Textbook</span>
+                                            <span class="textbook">Le nouveau taxi 1 by Guy Capelle, Robert Menand</span>
+                                        </div>
+
+                                        <div class="detail-item">
+                                            <span class="detail-label">Language</span>
+                                            <span>English, French</span>
+                                        </div>
+                                        
+                                        <div class="detail-item">
+                                            <span class="detail-label">Type</span>
                                             <span>Elective</span>
                                         </div>
+
                                         <div class="detail-item">
-                                            <span class="detail-label">Textbook:</span>
-                                            <span class="textbook">Le nouveau taxi 1 </span>
-                                        </div>
+                                            <span class="detail-label">Credit</span>
+                                            <span>2</span>
+                                        </div>                              
                                     </div>
                                 </div>
                             </article>
 
-                            <article class="course-card">
-                                <div class="course-header">
-                                    <h3 class="course-title">写作与交流（Writing and Communication）</h3>
-                                    <div class="instructor">Prof. ZHOU Xiumei</div>
-                                    <div class="course-time">Fall, 2023</div>
-                                </div>
-                                <div class="course-body">
-                                    <p class="course-description">
-                                        Introduction here.
-                                    </p>
-                                    <div class="course-details">
-                                        <div class="detail-item">
-                                            <span class="detail-label">Grade:</span>
-                                            <span>P</span>
-                                        </div>
-                                        <div class="detail-item">
-                                            <span class="detail-label">Credit:</span>
-                                            <span>2</span>
-                                        </div>
-                                        <div class="detail-item">
-                                            <span class="detail-label">Type:</span>
-                                            <span>Required</span>
-                                        </div>
-                                        <div class="detail-item">
-                                            <span class="detail-label">Textbook:</span>
-                                            <span class="textbook">Textbook</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="course-card">
-                                <div class="course-header">
-                                    <h3 class="course-title">English for Academic Purpose (EAP)</h3>
-                                    <div class="instructor">Prof. LI Zhuo</div>
-                                    <div class="course-time">Fall, 2024</div>
-                                </div>
-                                <div class="course-body">
-                                    <p class="course-description">
-                                        EAP.
-                                    </p>
-                                    <div class="course-details">
-                                        <div class="detail-item">
-                                            <span class="detail-label">Grade:</span>
-                                            <span>A (9?)</span>
-                                        </div>
-                                        <div class="detail-item">
-                                            <span class="detail-label">Credit:</span>
-                                            <span>2</span>
-                                        </div>
-                                        <div class="detail-item">
-                                            <span class="detail-label">Type:</span>
-                                            <span>Required</span>
-                                        </div>
-                                        <div class="detail-item">
-                                            <span class="detail-label">Textbook:</span>
-                                            <span class="textbook">TBC</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
+                            <p class="empty-notice">More courses will be added soon.</p>
                         </div>
                     </section>
                 </div>
@@ -1198,116 +1673,111 @@
             
             <div id="experience" class="content">
                 <section class="courses-section">
-                    <p>2023.9-2027.6 B.D. in Mathematics, University, Shenzhen, China </p>
+                    <div class="info-card">
+                        <div class="info-item">
+                            <span class="info-label">2023.9-2027.6 (expected)</span>
+                            <span>B.S. in Mathematics</span>
+                        </div>
+                        
+                        <div class="info-item">
+                            <span class="info-label">2025.8 (expected)</span>
+                            <span>NUS SSI Math Track</span>
+                        </div>
+                    </div>
+                    <div style="height: 100px;"></div>
                 </section>
             </div>
         </main>
         
         <footer>
-            <p>This webpage was created with the assistance of Artificial Intelligence.</p>
+            <p>This webpage was created with the assistance of artificial intelligence.</p>
             <p>© 2025 Peilomap's GitHub Pages. All rights reserved.</p>
         </footer>
     </div>
     
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', () => {
             const navItems = document.querySelectorAll('.nav-item');
             const subNavItems = document.querySelectorAll('.sub-nav-item');
             const contents = document.querySelectorAll('.content');
             const subContents = document.querySelectorAll('.sub-content');
+            const overviewGrid = document.getElementById('overviewGrid');
             
-            // Initialize first content
-            showContent('personal');
-            
-            // Navigation click events
-            navItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const target = this.dataset.target;
-                    showContent(target);
-                    
-                    // For courses tab, also show the first sub-content
-                    if (target === 'courses') {
-                        showSubContent('alg');
-                    }
-                });
+            showContent('CV');
+
+            document.querySelector('.navbar').addEventListener('click', (e) => {
+                const navItem = e.target.closest('.nav-item');
+                if (!navItem) return;
+                
+                const target = navItem.dataset.target;
+                showContent(target);
+                
+                if (target === 'courses') {
+                    showSubContent('alg');
+                }
             });
             
-            // Sub-navigation click events (only for courses tab)
-            subNavItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const target = this.dataset.subtarget;
-                    showSubContent(target);
-                });
+            document.querySelector('.sub-nav').addEventListener('click', (e) => {
+                const subNavItem = e.target.closest('.sub-nav-item');
+                if (!subNavItem) return;
+                
+                showSubContent(subNavItem.dataset.subtarget);
             });
-            
+
             function showContent(contentId) {
-                // Hide all content
-                contents.forEach(content => content.classList.remove('active'));
-                // Remove all active classes
-                navItems.forEach(item => item.classList.remove('active'));
-                // Show selected content
-                const targetContent = document.getElementById(contentId);
-                if (targetContent) {
-                    targetContent.classList.add('active');
-                    document.querySelector(`.nav-item[data-target="${contentId}"]`).classList.add('active');
-                }
+                contents.forEach(content => content.classList.toggle('active', content.id === contentId));
+                navItems.forEach(item => item.classList.toggle('active', item.dataset.target === contentId));
             }
-            
+
             function showSubContent(subContentId) {
-                // Hide all sub-content
-                subContents.forEach(content => content.classList.remove('active'));
-                // Remove all active classes
-                subNavItems.forEach(item => item.classList.remove('active'));
-                // Show selected sub-content
-                const targetSubContent = document.getElementById(`${subContentId}-content`);
-                if (targetSubContent) {
-                    targetSubContent.classList.add('active');
-                    document.querySelector(`.sub-nav-item[data-subtarget="${subContentId}"]`).classList.add('active');
-                }
+                subContents.forEach(content => 
+                    content.classList.toggle('active', content.id === `${subContentId}-content`)
+                );
+                subNavItems.forEach(item => 
+                    item.classList.toggle('active', item.dataset.subtarget === subContentId)
+                );
             }
 
-            // Create course overview visualization
             function createCourseOverview() {
-    const overviewGrid = document.getElementById('overviewGrid');
-    const courses = document.querySelectorAll('.course-card');
-    
-    courses.forEach(course => {
-        const square = document.createElement('div');
-        square.className = 'course-square';
-        
-        // 获取课程类别
-        const parentSection = course.closest('.sub-content');
-        let category = '';
-        if (parentSection.id.includes('alg')) category = 'alg';
-        else if (parentSection.id.includes('ana')) category = 'ana';
-        else if (parentSection.id.includes('top')) category = 'top';
-        else if (parentSection.id.includes('nat')) category = 'nat';
-        else if (parentSection.id.includes('gen')) category = 'gen';
-        
-        square.classList.add(`square-${category}`);
-        
-        // 获取并显示完整课程名称
-        const courseName = course.querySelector('.course-title').textContent;
-        square.textContent = courseName;
-        
-        // 点击跳转到对应课程
-        square.addEventListener('click', () => {
-            showContent('courses');
-            showSubContent(category);
-            setTimeout(() => {
-                course.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                course.style.boxShadow = '0 0 0 3px rgba(52, 152, 219, 0.5)';
-                setTimeout(() => {
-                    course.style.boxShadow = '';
-                }, 2000);
-            }, 100);
-        });
-        
-        overviewGrid.appendChild(square);
-    });
-}
+                const courses = document.querySelectorAll('.course-card');
 
-            // Initialize course overview
+                overviewGrid.innerHTML = '';
+                
+                if (!courses.length) {
+                    overviewGrid.innerHTML = '<p class="empty-notice">No courses available yet</p>';
+                    return;
+                }
+                
+                courses.forEach(course => {
+                    const square = document.createElement('div');
+                    square.className = 'course-square';
+
+                    const parentId = course.closest('.sub-content').id;
+                    const category = parentId.split('-')[0];
+                    square.classList.add(`square-${category}`);
+                    
+                    square.textContent = course.querySelector('.course-title').textContent;
+                    
+                    square.addEventListener('click', () => {
+                        showContent('courses');
+                        showSubContent(category);
+                        
+                        setTimeout(() => {
+                            course.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            
+                            course.style.transition = 'box-shadow 0.3s ease';
+                            course.style.boxShadow = '0 0 0 3px rgba(52, 152, 219, 0.5)';
+                            
+                            setTimeout(() => {
+                                course.style.boxShadow = '';
+                            }, 2000);
+                        }, 100);
+                    });
+                    
+                    overviewGrid.appendChild(square);
+                });
+            }
+
             createCourseOverview();
         });
     </script>
